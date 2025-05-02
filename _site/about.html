@@ -81,47 +81,47 @@
     </header>
 
     <main class="container">
-      <h1 id="about-me">About Me</h1>
+      <h1 id="关于我">关于我</h1>
 
-<h2 id="introduction">Introduction</h2>
-<p>Welcome to my personal space! Here, I share insights about my journey, skills, and passions.</p>
+<p>欢迎来到我的个人页面！这里你可以了解更多关于我的信息。</p>
 
-<h2 id="professional-background">Professional Background</h2>
+<h2 id="简介">简介</h2>
+<p>我是 [你的名字]，一名 [你的职业或身份]，热衷于 [你的兴趣或领域]。</p>
+
+<h2 id="专业背景">专业背景</h2>
 <ul>
-  <li><strong>Current Role</strong>: [Your Current Position]</li>
-  <li><strong>Experience</strong>: [Years of Experience] years in [Your Field]</li>
-  <li><strong>Education</strong>: [Your Degree] from [Your University]</li>
+  <li><strong>教育</strong>：[你的学历或学校]</li>
+  <li><strong>工作经历</strong>：[你的工作经历或职位]</li>
+  <li><strong>成就</strong>：[你的主要成就或奖项]</li>
 </ul>
 
-<h2 id="skills">Skills</h2>
+<h2 id="技能">技能</h2>
 <ul>
-  <li><strong>Technical Skills</strong>: [List your technical skills]</li>
-  <li><strong>Soft Skills</strong>: [List your soft skills]</li>
+  <li>[技能 1]</li>
+  <li>[技能 2]</li>
+  <li>[技能 3]</li>
 </ul>
 
-<h2 id="projects">Projects</h2>
+<h2 id="项目">项目</h2>
 <ul>
-  <li><strong>[Project Name]</strong>: Brief description of the project and your role.</li>
-  <li><strong>[Project Name]</strong>: Brief description of the project and your role.</li>
+  <li><strong>项目 1</strong>：[项目描述]</li>
+  <li><strong>项目 2</strong>：[项目描述]</li>
+  <li><strong>项目 3</strong>：[项目描述]</li>
 </ul>
 
-<h2 id="interests">Interests</h2>
+<h2 id="兴趣">兴趣</h2>
 <ul>
-  <li>[Your Interest 1]</li>
-  <li>[Your Interest 2]</li>
-  <li>[Your Interest 3]</li>
+  <li>[兴趣 1]</li>
+  <li>[兴趣 2]</li>
+  <li>[兴趣 3]</li>
 </ul>
 
-<h2 id="contact-information">Contact Information</h2>
+<h2 id="联系方式">联系方式</h2>
 <ul>
-  <li><strong>Email</strong>: [Your Email Address]</li>
-  <li><strong>LinkedIn</strong>: [Your LinkedIn Profile]</li>
-  <li><strong>GitHub</strong>: [Your GitHub Profile]</li>
+  <li><strong>邮箱</strong>：[你的邮箱地址]</li>
+  <li><strong>GitHub</strong>：[你的 GitHub 链接]</li>
+  <li><strong>LinkedIn</strong>：[你的 LinkedIn 链接]</li>
 </ul>
-
-<hr />
-
-<p>Feel free to reach out if you have any questions or would like to collaborate on a project!</p>
 
     </main>
 
@@ -137,8 +137,16 @@
       const canvas = document.getElementById('codeRain');
       const ctx = canvas.getContext('2d');
 
-      canvas.width = window.innerWidth;
-      canvas.height = window.innerHeight;
+      function resizeCanvas() {
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+      }
+
+      // Initial resize
+      resizeCanvas();
+
+      // Resize canvas on window resize
+      window.addEventListener('resize', resizeCanvas);
 
       const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
       const fontSize = 16;

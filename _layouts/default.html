@@ -45,8 +45,16 @@
       const canvas = document.getElementById('codeRain');
       const ctx = canvas.getContext('2d');
 
-      canvas.width = window.innerWidth;
-      canvas.height = window.innerHeight;
+      function resizeCanvas() {
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+      }
+
+      // Initial resize
+      resizeCanvas();
+
+      // Resize canvas on window resize
+      window.addEventListener('resize', resizeCanvas);
 
       const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
       const fontSize = 16;

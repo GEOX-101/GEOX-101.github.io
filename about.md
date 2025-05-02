@@ -2,34 +2,34 @@
 layout: default
 title: 关于
 ---
-# About Me
+# 关于我
 
-## Introduction
-Welcome to my personal space! Here, I share insights about my journey, skills, and passions.
+欢迎来到我的个人页面！这里你可以了解更多关于我的信息。
 
-## Professional Background
-- **Current Role**: [Your Current Position]
-- **Experience**: [Years of Experience] years in [Your Field]
-- **Education**: [Your Degree] from [Your University]
+## 简介
+我是 [你的名字]，一名 [你的职业或身份]，热衷于 [你的兴趣或领域]。
 
-## Skills
-- **Technical Skills**: [List your technical skills]
-- **Soft Skills**: [List your soft skills]
+## 专业背景
+- **教育**：[你的学历或学校]
+- **工作经历**：[你的工作经历或职位]
+- **成就**：[你的主要成就或奖项]
 
-## Projects
-- **[Project Name]**: Brief description of the project and your role.
-- **[Project Name]**: Brief description of the project and your role.
+## 技能
+- [技能 1]
+- [技能 2]
+- [技能 3]
 
-## Interests
-- [Your Interest 1]
-- [Your Interest 2]
-- [Your Interest 3]
+## 项目
+- **项目 1**：[项目描述]
+- **项目 2**：[项目描述]
+- **项目 3**：[项目描述]
 
-## Contact Information
-- **Email**: [Your Email Address]
-- **LinkedIn**: [Your LinkedIn Profile]
-- **GitHub**: [Your GitHub Profile]
+## 兴趣
+- [兴趣 1]
+- [兴趣 2]
+- [兴趣 3]
 
----
-
-Feel free to reach out if you have any questions or would like to collaborate on a project!
+## 联系方式
+- **邮箱**：[你的邮箱地址]
+- **GitHub**：[你的 GitHub 链接]
+- **LinkedIn**：[你的 LinkedIn 链接]
