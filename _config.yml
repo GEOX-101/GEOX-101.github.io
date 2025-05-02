@@ -1,29 +1,32 @@
-sass:
-  style: compressed
-  load_paths:
-    - _sass
-  syntax: :scss
-  future:
-    dart_sass: false  # 暂时禁用新特性警告
+title: grobob101的博客
+description: >-
+  抽象从不抽象
+url: "https://GEOX-101.github.io" # 替换为你的域名
+baseurl: "" # 如果你的网站不在根目录，设置子目录路
 
-collections:
-  authors:
-    output: true  # 允许为每个作者生成独立页面[9](@ref)
+# 构建设置
+markdown: kramdown
+theme: minima
+plugins:
+  - jekyll-feed
+  - jekyll-sitemap
 
+# 作者信息
+author:
+  name: 王国伟
+  email: 2552831709@qq.com
+  github: https://github.com/Grobob101
 
-
+# 默认值
 defaults:
-  - scope:
-      path: ""
-      type: "authors"
-    values:
-      layout: "author"
   - scope:
       path: ""
       type: "posts"
     values:
       layout: "post"
+      comments: true
   - scope:
       path: ""
+      type: "pages"
     values:
-      layout: "default"
+      layout: "page"

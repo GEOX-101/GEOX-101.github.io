@@ -1,12 +1,40 @@
-<!doctype html>
-<html>
+<!DOCTYPE html>
+<html lang="{{ site.lang | default: 'en' }}">
   <head>
     <meta charset="utf-8">
-    <title>{{ page.title }}</title>
-    <link rel="stylesheet" href="/assets/css/styles.css"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="{{ '/assets/images/favicon.ico' | relative_url }}" type="image/png">
+    <meta name="description" content="{{ site.description | default: 'A Jekyll-powered blog' }}">
+    <meta name="author" content="{{ site.author | default: '王国伟' }}">
+    <title>{{ page.title | default: site.title }}</title>
+    
+    <!-- Styles -->
+    <link rel="stylesheet" href="{{ '/assets/css/styles.css' | relative_url }}">
   </head>
   <body>
-    {% include navigation.html %}
-    {{ content }}
+    <header class="site-header">
+      <!-- Add logo with link to homepage -->
+      <div class="logo-container">
+        <a href="{{ '/' | relative_url }}">
+          <img src="{{ '/assets/images/logo.png' | relative_url }}" 
+               alt="{{ site.title }}" 
+               class="site-logo">
+        </a>
+      </div>
+      {% include navigation.html %} <!-- 导航栏 -->
+    </header>
+
+    <main class="container">
+      {{ content }}
+    </main>
+
+    <footer class="site-footer">
+      <div class="container">
+        <p>&copy; {{ site.time | date: '%Y' }} {{ site.title }}. All rights reserved.</p>
+        {% comment %} Add social media links here {% endcomment %}
+      </div>
+    </footer>
+
+    {% comment %} Add JavaScript files here {% endcomment %}
   </body>
 </html>
