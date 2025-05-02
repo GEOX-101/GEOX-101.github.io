@@ -1,15 +1,26 @@
-
-.site-header {
-  border-top: 5px solid $brand-color;
-  border-bottom: 1px solid $grey-color-light;
+.container {
+  background-color: rgba(255, 255, 255, 0.7); /* White with 70% opacity */
+  margin: auto; /* Center the container */
+  backdrop-filter: blur(10px); /* Frosted glass effect */
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.5); /* Outer glow effect */
+  padding: 20px; /* Optional: Add some padding for better appearance */
+  border-radius: 10px; /* Optional: Add rounded corners */
+  width: 90%;
+  height: 100%;
 }
 
-.post-title {
-  font-size: 2em;
-  margin-bottom: 0.5em;
+.activity_nav{
+  color: aqua;
 }
-
-.post-meta {
-  color: $grey-color;
-  margin-bottom: 1em;
+body {
+  margin: 0;
+  padding: 0;
+  overflow: hidden; /* Prevent scrolling */
+  position: relative;
+}
+canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1; /* Place behind other content */
 }

@@ -1,27 +1,32 @@
 <!DOCTYPE html>
-<html lang="{{ site.lang | default: 'en' }}">
+<html lang="{{ site.lang | default: 'zh' }}">
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="{{ '/assets/images/favicon.ico' | relative_url }}" type="image/png">
-    <meta name="description" content="{{ site.description | default: 'A Jekyll-powered blog' }}">
-    <meta name="author" content="{{ site.author | default: '王国伟' }}">
     <title>{{ page.title | default: site.title }}</title>
     
     <!-- Styles -->
     <link rel="stylesheet" href="{{ '/assets/css/styles.css' | relative_url }}">
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+        overflow: hidden; /* Prevent scrolling */
+        position: relative;
+      }
+      canvas {
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: -1; /* Place behind other content */
+      }
+    </style>
   </head>
   <body>
+    <canvas id="codeRain"></canvas> <!-- Canvas for code rain effect -->
     <header class="site-header">
-      <!-- Add logo with link to homepage -->
-      <div class="logo-container">
-        <a href="{{ '/' | relative_url }}">
-          <img src="{{ '/assets/images/logo.png' | relative_url }}" 
-               alt="{{ site.title }}" 
-               class="site-logo">
-        </a>
-      </div>
-      {% include navigation.html %} <!-- 导航栏 -->
+      {% include navigation.html %}
     </header>
 
     <main class="container">
@@ -35,6 +40,42 @@
       </div>
     </footer>
 
-    {% comment %} Add JavaScript files here {% endcomment %}
+    <!-- JavaScript for Code Rain Effect -->
+    <script>
+      const canvas = document.getElementById('codeRain');
+      const ctx = canvas.getContext('2d');
+
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+
+      const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+      const fontSize = 16;
+      const columns = canvas.width / fontSize;
+      const drops = [];
+
+      for (let i = 0; i < columns; i++) {
+        drops[i] = 1;
+      }
+
+      function draw() {
+        ctx.fillStyle = 'rgba(0, 0, 0, 0.05)';
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+        ctx.fillStyle = '#0F0';
+        ctx.font = `${fontSize}px monospace`;
+
+        for (let i = 0; i < drops.length; i++) {
+          const text = characters[Math.floor(Math.random() * characters.length)];
+          ctx.fillText(text, i * fontSize, drops[i] * fontSize);
+
+          if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) {
+            drops[i] = 0;
+          }
+          drops[i]++;
+        }
+      }
+
+      setInterval(draw, 33);
+    </script>
   </body>
 </html>
