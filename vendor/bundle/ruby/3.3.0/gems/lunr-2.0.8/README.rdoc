@@ -1,0 +1,168 @@
+= Lunr
+
+* http://github.com/jbarnette/lunr
+
+== Description
+
+A simple read-only interface to Solr, built on Sunspot.
+
+Lunr makes it easy to query and create objects from a Sunspot-managed
+Solr index without requiring all the knowledge, code, and data used to
+build the index in the first place. If you have complex indexes with a
+stored fields and need to search / access those fields without access
+to the original data store, Lunr might be what you're looking for.
+
+== A Lunr Model
+
+  require "lunr"
+
+  class My::SimpleTrack
+    include Lunr::Model
+
+    searches "Track" do
+      property :album,  :text
+      property :artist, :text
+      property :title,  :text
+
+      time    :accepted_at
+      boolean :hot
+      string  :state
+    end
+
+    scope do
+      order_by :hot, :desc
+      order_by :accepted_at, :desc
+
+      with :state, "accepted"
+    end
+
+    scope :hot do
+      with :hot, true
+    end
+
+    scope :state do |q, state|
+      q.with :state, state
+    end
+  end
+
+=== Including the Module
+
+All model classes must <code>include Lunr::Model</code>.
+
+=== Define the Search Index
+
+Time to tell Solr what this class searches, and which fields are
+properties. The DSL in here is exactly the same as Sunspot's, with the
+addition of a <code>property</code> method. Calling
+<code>property</code> tells Lunr that you expect access to this field,
+generates an <code>attr_reader</code> and passes it along to Sunspot's
+DSL as <code>:stored => true</code>.
+
+    searches "Track" do
+      property :album,  :text
+      property :artist, :text
+      property :title,  :text
+
+      time    :accepted_at
+      boolean :hot
+      string  :state
+    end
+
+The <code>searches</code> method also takes an optional type name,
+which can be used to map Lunr model types to differing search
+results. In this case, <code>My::SimpleTrack</code> will search
+documents with an original type of <code>Track</code>.
+
+List every criteria you might want to search by, but omit any of
+Sunspot's DSL that involves indexing.
+
+=== Default Scope
+
+Call <code>scope</code> with no name to set default filtering,
+ordering, and pagination properties.
+
+    scope do
+      order_by :hot, :desc
+      order_by :accepted_at, :desc
+
+      with :state, "accepted"
+    end
+
+=== Named Scopes
+
+You can define any number of named scopes to make searching
+simpler. They're made availble as static methods on the model class,
+and they're chainable when searching. See the "Searching" section
+below.
+
+    scope :hot do
+      with :hot, true
+    end
+
+Scope blocks without parameters are <code>instance_eval</code>ed in
+the Sunspot query DSL's context. If your scope takes parameters, the
+first param must be the Sunspot query object.
+
+    scope :state do |q, state|
+      q.with :state, state
+    end
+
+== Searching
+
+Use Sunspot's excellent search DSL for ad hoc searches.
+
+    My::SimpleTrack.search
+    My::SimpleTrack.all # same thing
+
+    My::SimpleTrack.search { with :title, "Hello" }
+    My::SimpleTrack.first  { with :title, "First!" }
+
+All searches return a <code>Lunr::Search</code> object, and searches
+can be narrowed using the Sunspot query DSL or named scopes. Searches
+aren't run until an <code>Enumerable</code>, arraylike, or pagination
+method is called on the search object. For convenience,
+<code>Lunr::Search</code> quacks like
+<code>WillPaginate::Collection</code>.
+
+   search = My::SimpleTrack.hot.scope { |q| q.fulltext "hello" }
+   p :page => search.page, :total => search.total
+
+   search.each do |track|
+     puts "#{track.title} by #{track.artist} on #{track.album}."
+   end
+
+== Installation
+
+    $ gem install lunr
+
+== Development
+
+Lunr is under pretty heavy development. It was extracted from a Real
+Application, and barely has any tests of its own. It will be in flux a
+bit. Contributions and suggestions are very welcome.
+
+Install the <code>isolate</code> gem and run <code>rake</code>. All
+dev dependencies will be installed automatically.
+
+== License
+
+Copyright 2010 John Barnette (code@jbarnette.com)
+
+Permission is hereby granted, free of charge, to any person obtaining
+a copy of this software and associated documentation files (the
+'Software'), to deal in the Software without restriction, including
+without limitation the rights to use, copy, modify, merge, publish,
+distribute, sublicense, and/or sell copies of the Software, and to
+permit persons to whom the Software is furnished to do so, subject to
+the following conditions:
+
+The above copyright notice and this permission notice shall be
+included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED 'AS IS', WITHOUT WARRANTY OF ANY KIND,
+EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
+IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY
+CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT,
+TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
+SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.

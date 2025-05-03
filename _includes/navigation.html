@@ -1,5 +1,4 @@
 <nav style="background-color: #000; padding: 1rem; display: flex; justify-content: space-between; align-items: center; margin: 0;">
-
   <div class="nav-links" style="display: flex; gap: 2rem; align-items: center;">
     <div class="logo-container">
       <a href="{{ '/' | relative_url }}">
@@ -10,7 +9,6 @@
              style=" box-shadow: 0 0 8px white;">  <!-- Added border radius and white glow -->
       </a>
     </div>
-
     {% for item in site.data.navigation %}
       <a href="{{ item.link }}" 
          {% if page.url == item.link %}class="current"{% endif %}
@@ -20,23 +18,19 @@
     {% endfor %}
   </div>
   <div class="nav-right" style="display: flex; gap: 1rem; align-items: center;">
-        <form action="/search.html" method="get" style="display: flex;">
-            <input type="search" 
-                   name="q" 
-                   placeholder="Search..." 
-                   style="padding: 0.5rem; border-radius: 4px; border: none;">
-            <button type="submit" style="padding: 0.5rem; border-radius: 4px; border: none; background-color: #fff; cursor: pointer;">🔍</button>
-        </form>
-        
-        <a href="/profile" 
-           style="color: white; text-decoration: none; display: flex; align-items: center; text-shadow: 0 0 8px white;">
-          <img src="{{ '/assets/images/avator/avator.png' | relative_url }}" 
-               alt="Profile" 
-               class="profile-avatar"
-               width="30" height="30"
-               style="border-radius: 100px; margin-right: 0.5rem;">
-        </a>
+    <div id="search-container">
+      <input type="text" id="search-input" placeholder="search...">
+      <ul id="results-container"></ul>
     </div>
+    <a href="/profile" 
+       style="color: white; text-decoration: none; display: flex; align-items: center; text-shadow: 0 0 8px white;">
+      <img src="{{ '/assets/images/avator/avator.png' | relative_url }}" 
+           alt="Profile" 
+           class="profile-avatar"
+           width="30" height="30"
+           style="border-radius: 100px; margin-right: 0.5rem;">
+    </a>
+  </div>
 </nav>
 
 <style>
@@ -44,4 +38,93 @@
   text-shadow: 0 0 8px rgb(100, 280, 218) !important;
   color: rgb(80, 220, 218) !important; /* Added to ensure the color changes */
 }
+#search-input {
+    width: 90%;
+    height: 35px;
+    color: #333;
+    background-color: rgba(227,231,236,.2);
+    line-height: 35px;
+    padding:0px 16px;
+    border: 1px solid #c0c0c0;
+    font-size: 16px;
+    font-weight: bold;
+    border-radius: 17px;
+    outline: none;
+    box-sizing: border-box;
+    box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(102,175,233,.6);
+}
+#search-input:focus {
+    outline: none;
+    border-color: rgb(102, 175, 233);
+    background-color: #fff;
+    box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px #007fff;
+}
+#results-container {
+    background-color: rgba(255, 255, 255, 0.8); /* White with 80% opacity */
+    backdrop-filter: blur(10px); /* Frosted glass effect */
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    margin-top: 5px;
+    padding: 10px;
+    max-height: 300px;
+    overflow-y: auto;
+    display: none; /* Hide the dropdown by default */
+}
+#results-container li {
+    list-style: none;
+    padding: 5px 10px;
+    border-bottom: 1px solid #eee;
+}
+#results-container li:last-child {
+    border-bottom: none;
+}
+#results-container li a {
+    color: #333;
+    text-decoration: none;
+}
+#results-container li a:hover {
+    color: #007fff;
+}
 </style>
+
+<script src="https://unpkg.com/simple-jekyll-search@latest/dest/simple-jekyll-search.min.js"></script>
+<script>
+  var sjs = SimpleJekyllSearch({
+    searchInput: document.getElementById('search-input'),
+    resultsContainer: document.getElementById('results-container'),
+    json: '{{ "/search.json" | relative_url }}',
+    searchResultTemplate: '<li><a href="{url}">{title}</a></li>',
+    noResultsText: '<li>No results found</li>',
+    limit: 10,
+    fuzzy: true
+  });
+
+  // Add event listener to handle search input changes
+  document.getElementById('search-input').addEventListener('input', function() {
+    var resultsContainer = document.getElementById('results-container');
+    if (this.value.trim() === '') {
+      resultsContainer.style.display = 'none'; // Hide the dropdown if the search input is empty
+    } else {
+      resultsContainer.style.display = 'block'; // Show the dropdown if there is input
+    }
+  });
+
+  // Add event listener to hide the dropdown when clicking outside
+  document.addEventListener('click', function(event) {
+    var searchContainer = document.getElementById('search-container');
+    var resultsContainer = document.getElementById('results-container');
+    if (!searchContainer.contains(event.target)) {
+      resultsContainer.style.display = 'none'; // Hide the dropdown when clicking outside the search container
+    }
+  });
+
+  // Add event listener to hide the dropdown when a search result is clicked
+  document.getElementById('results-container').addEventListener('click', function(event) {
+    if (event.target.tagName === 'A') {
+      this.style.display = 'none'; // Hide the dropdown when a search result link is clicked
+      // Force the browser to navigate immediately after hiding the dropdown
+      window.location.href = event.target.href;
+      event.preventDefault(); // Prevent the default navigation behavior to ensure our custom handling takes precedence
+    }
+  });
+</script>

@@ -1,0 +1,37 @@
+/* 新增搜索样式 */
+.search-box {
+  max-width: 800px;
+  margin: 2rem auto;
+  padding: 1rem;
+}
+
+.search-input-group {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.keywords {
+  flex: 1;
+  padding: 0.8rem;
+  border: 2px solid #ddd;
+  border-radius: 25px;
+}
+
+.search-button {
+  background: #2196F3;
+  color: white;
+  border: none;
+  padding: 0 1.5rem;
+  border-radius: 25px;
+  cursor: pointer;
+}
+
+.search-results {
+  margin-top: 2rem;
+  border-top: 1px solid #eee;
+}
+
+.hightlighted {
+  background-color: #fff3cd;
+  font-weight: bold;
+}
