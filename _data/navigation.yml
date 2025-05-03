@@ -6,5 +6,7 @@
   link: /categories.html
 - name: 标签
   link: /tags.html
+- name: 归档
+  link: /archive.html
 - name: 关于
   link: /about.html

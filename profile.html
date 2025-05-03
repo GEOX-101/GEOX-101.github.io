@@ -1,0 +1,46 @@
+---
+layout: default
+title: Profile
+---
+
+<h1>👤 个人信息</h1>
+
+<div class="profile-container">
+    <img src="/assets/images/avator/avator.png" alt="Profile Picture" class="profile-picture">
+    <div class="profile-info">
+        <h2>用户名: grobob101</h2>
+        <p>邮箱: grobob101@example.com</p>
+        <p>简介: 热爱编程与分享的技术爱好者</p>
+    </div>
+</div>
+
+<style>
+    .profile-container {
+        display: flex;
+        align-items: center;
+        gap: 2rem;
+        margin-top: 2rem;
+    }
+
+    .profile-picture {
+        width: 150px;
+        height: 150px;
+        border-radius: 100px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    }
+
+    .profile-info {
+        font-size: 1.2em;
+    }
+
+    @keyframes typing {
+        from { width: 0; }
+        to { width: 100%; }
+    }
+
+    h1 {
+        overflow: hidden;
+        white-space: nowrap;
+        animation: typing 3.5s steps(40, end);
+    }
+</style>

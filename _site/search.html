@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="/assets/images/favicon.ico" type="image/png">
-    <title>Categories</title>
+    <title>Search</title>
     
     <!-- Styles -->
     <link rel="stylesheet" href="/assets/css/styles.css">
@@ -54,7 +54,7 @@
       </a>
     
       <a href="/categories.html" 
-         class="current"
+         
          style="color: white; text-decoration: none; padding: 0.5rem; text-shadow: 0 0 8px white;">
         分类
       </a>
@@ -107,76 +107,149 @@
     </header>
 
     <main class="container">
-      <h1>📂 分类</h1>
+      <div id="search-container">
+    <input type="text" id="search-input" placeholder="Search blog posts...">
+    <ul id="search-results"></ul>
+</div>
 
-<ul class="categories-list">
-  
-    <li class="category-item">
-      <h2 class="category-title">编程</h2>
-      <ul class="posts-list">
-        
-          <li class="post-item">
-            <a href="/%E7%BC%96%E7%A8%8B/2025/05/03/java%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E5%85%A5%E5%9C%9F.html">Java从入门到入土 📚</a>
-          </li>
-        
-      </ul>
-    </li>
-  
-</ul>
+<script>
+    // Load the search index
+    fetch('/search-index.json')
+        .then(response => response.json())
+        .then(data => {
+            const idx = lunr.Index.load(data);
+            const posts = JSON.parse(sessionStorage.getItem('posts'));
+
+            // Search function
+            document.getElementById('search-input').addEventListener('input', function() {
+                const query = this.value.toLowerCase().trim();
+                const searchResults = document.getElementById('search-results');
+                searchResults.innerHTML = '';
+
+                if (query.length === 0) {
+                    return;
+                }
+
+                // Search both content and filenames
+                const results = posts.filter(post => {
+                    const filename = post.url.split('/').pop().toLowerCase();
+                    return post.title.toLowerCase().includes(query) || 
+                           post.content.toLowerCase().includes(query) ||
+                           filename.includes(query);
+                });
+
+                if (results.length === 0) {
+                    searchResults.innerHTML = '<li>没有查询结果</li>';
+                    return;
+                }
+
+                // Sort by relevance (filename matches first, then title, then content)
+                results.sort((a, b) => {
+                    const aFilename = a.url.split('/').pop().toLowerCase();
+                    const bFilename = b.url.split('/').pop().toLowerCase();
+                    
+                    const aFilenameMatch = aFilename.includes(query) ? 1 : 0;
+                    const bFilenameMatch = bFilename.includes(query) ? 1 : 0;
+                    
+                    const aTitleMatch = a.title.toLowerCase().includes(query) ? 1 : 0;
+                    const bTitleMatch = b.title.toLowerCase().includes(query) ? 1 : 0;
+                    
+                    const aContentMatch = a.content.toLowerCase().includes(query) ? 1 : 0;
+                    const bContentMatch = b.content.toLowerCase().includes(query) ? 1 : 0;
+                    
+                    return (bFilenameMatch - aFilenameMatch) || 
+                           (bTitleMatch - aTitleMatch) || 
+                           (bContentMatch - aContentMatch);
+                });
+
+                results.forEach(result => {
+                    const postItem = document.createElement('li');
+                    postItem.className = 'post-item';
+                    postItem.innerHTML = `
+                        <div class="post-header">
+                            <h2 class="post-title"><a href="${result.url}">📄 ${result.title}</a></h2>
+                        </div>
+                        <div class="post-content">
+                            ${result.content}
+                        </div>
+                        <div class="post-footer">
+                            <span class="post-date">📅 ${result.date}</span>
+                            <span class="post-author">👤 ${result.author}</span>
+                        </div>
+                    `;
+                    searchResults.appendChild(postItem);
+                });
+            });
+        });
+</script>
 
 <style>
-  .categories-list {
-    list-style: none;
-    padding: 0;
-  }
+    #search-container {
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 20px;
+    }
 
-  .category-item {
-    border: 1px solid #ddd;
-    margin-bottom: 20px;
-    padding: 20px;
-    border-radius: 10px;
-    background-color: #f9f9f9;
-    box-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
-    transition: transform 0.3s ease;
-  }
+    #search-input {
+        width: 100%;
+        padding: 10px;
+        font-size: 1.2em;
+        margin-bottom: 20px;
+    }
 
-  .category-item:hover {
-    transform: scale(1.05);
-  }
+    #search-results {
+        list-style: none;
+        padding: 0;
+    }
 
-  .category-title {
-    font-size: 1.5em;
-    margin-bottom: 10px;
-  }
+    .post-item {
+        border: 1px solid #ddd;
+        margin-bottom: 20px;
+        padding: 20px;
+        border-radius: 10px;
+        background-color: #f9f9f9;
+        box-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
+        transition: transform 0.3s ease;
+    }
 
-  .posts-list {
-    list-style: none;
-    padding-left: 20px;
-  }
+    .post-item:hover {
+        transform: scale(1.05);
+    }
 
-  .post-item {
-    margin-bottom: 5px;
-  }
+    .post-header {
+        margin-bottom: 15px;
+    }
 
-  .post-item a {
-    text-decoration: none;
-    color: #333;
-  }
+    .post-title {
+        margin: 0;
+        font-size: 1.5em;
+    }
 
-  .post-item a:hover {
-    color: #007bff;
-  }
+    .post-title a {
+        color: black;
+        text-decoration: none;
+    }
 
-  @keyframes typing {
-    from { width: 0; }
-    to { width: 100%; }
-  }
+    .post-content {
+        margin-bottom: 15px;
+        font-size: 1.1em;
+        line-height: 1.6;
+    }
 
-  h1 {
-    overflow: hidden;
-    white-space: nowrap;
-    animation: typing 3.5s steps(40, end);
-  }
+    .post-footer {
+        display: flex;
+        justify-content: space-between;
+        font-size: 0.9em;
+        color: #666;
+    }
+
+    .post-date {
+        align-self: flex-start;
+    }
+
+    .post-author {
+        align-self: flex-end;
+    }
 </style>
     </main>
 
