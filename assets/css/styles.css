@@ -10,12 +10,12 @@
 }
 
 .activity_nav{
-  color: aqua;
+  color: #00ffff;
 }
 body {
   margin: 0;
   padding: 0;
-  overflow: hidden; /* Prevent scrolling */
+  /* Delete: overflow: hidden; /* Prevent scrolling */
   position: relative;
 }
 canvas {
@@ -23,4 +23,11 @@ canvas {
   top: 0;
   left: 0;
   z-index: -1; /* Place behind other content */
+  /* Delete: overflow: hidden; /* Prevent scrolling */
+}
+
+.site-footer {
+  text-align: center; /* Center the text */
+  color: white; /* Set text color to white */
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.8); /* Add white glow effect */
 }

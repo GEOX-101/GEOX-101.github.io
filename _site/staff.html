@@ -12,7 +12,7 @@
       body {
         margin: 0;
         padding: 0;
-        overflow: hidden; /* Prevent scrolling */
+        /* Delete: overflow: hidden; /* Prevent scrolling */
         position: relative;
       }
       canvas {
@@ -20,6 +20,7 @@
         top: 0;
         left: 0;
         z-index: -1; /* Place behind other content */
+        /* Delete: overflow: hidden; /* Prevent scrolling */
       }
     </style>
   </head>
@@ -88,10 +89,8 @@
     </main>
 
     <footer class="site-footer">
-      <div class="container">
         <p>&copy; 2025 grobob101的博客. All rights reserved.</p>
         
-      </div>
     </footer>
 
     <!-- JavaScript for Code Rain Effect -->
@@ -101,7 +100,7 @@
 
       function resizeCanvas() {
         canvas.width = window.innerWidth;
-        canvas.height = window.innerHeight;
+        canvas.height = document.documentElement.scrollHeight; // Use document height instead of window height
       }
 
       // Initial resize
@@ -123,7 +122,7 @@
         ctx.fillStyle = 'rgba(0, 0, 0, 0.05)';
         ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-        ctx.fillStyle = '#0F0';
+        ctx.fillStyle = '#00ffff'; 
         ctx.font = `${fontSize}px monospace`;
 
         for (let i = 0; i < drops.length; i++) {
@@ -141,3 +140,5 @@
     </script>
   </body>
 </html>
+
+
