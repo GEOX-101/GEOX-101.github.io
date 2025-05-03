@@ -1,0 +1,76 @@
+---
+layout: default
+title: Tags
+---
+
+<h1>🏷️ 标记</h1>
+
+<ul class="tags-list">
+  {% for tag in site.tags %}
+    <li class="tag-item">
+      <h2 class="tag-title">{{ tag[0] }}</h2>
+      <ul class="posts-list">
+        {% for post in tag[1] %}
+          <li class="post-item">
+            <a href="{{ post.url }}">{{ post.title }}</a>
+          </li>
+        {% endfor %}
+      </ul>
+    </li>
+  {% endfor %}
+</ul>
+
+<style>
+  .tags-list {
+    list-style: none;
+    padding: 0;
+  }
+
+  .tag-item {
+    border: 1px solid #ddd;
+    margin-bottom: 20px;
+    padding: 20px;
+    border-radius: 10px;
+    background-color: #f9f9f9;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
+    transition: transform 0.3s ease;
+  }
+
+  .tag-item:hover {
+    transform: scale(1.05);
+  }
+
+  .tag-title {
+    font-size: 1.5em;
+    margin-bottom: 10px;
+  }
+
+  .posts-list {
+    list-style: none;
+    padding-left: 20px;
+  }
+
+  .post-item {
+    margin-bottom: 5px;
+  }
+
+  .post-item a {
+    text-decoration: none;
+    color: #333;
+  }
+
+  .post-item a:hover {
+    color: #007bff;
+  }
+
+  @keyframes typing {
+    from { width: 0; }
+    to { width: 100%; }
+  }
+
+  h1 {
+    overflow: hidden;
+    white-space: nowrap;
+    animation: typing 3.5s steps(40, end);
+  }
+</style>

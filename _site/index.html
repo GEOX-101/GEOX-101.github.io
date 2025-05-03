@@ -53,6 +53,18 @@
         我的博客
       </a>
     
+      <a href="/categories.html" 
+         
+         style="color: white; text-decoration: none; padding: 0.5rem; text-shadow: 0 0 8px white;">
+        分类
+      </a>
+    
+      <a href="/tags.html" 
+         
+         style="color: white; text-decoration: none; padding: 0.5rem; text-shadow: 0 0 8px white;">
+        标签
+      </a>
+    
       <a href="/about.html" 
          
          style="color: white; text-decoration: none; padding: 0.5rem; text-shadow: 0 0 8px white;">
@@ -98,7 +110,7 @@
     <!-- Main Content Area -->
     <div style="flex: 1; padding: 20px; margin-left: 20px;">
         <!-- Sections for Navigation Links -->
-        <section id="technical-books" style="display: flex; ">
+        <section id="technical-books" style="display: none;">
             <h2>技术书籍收藏</h2>
             <div style="display: flex; flex-wrap: wrap;">
                 <a href="./object/机器学习.pdf" target="_blank">
@@ -179,29 +191,18 @@
                 }
             }
         } else {
-            // Default to "技术书籍收藏" section if no hash is present
-            const defaultLink = document.querySelector('div a[href="#technical-books"]');
+            // Default to "博客" section if no hash is present
+            const defaultLink = document.querySelector('div a[href="#blog"]');
             if (defaultLink) {
                 defaultLink.classList.add('active');
                 defaultLink.style.boxShadow = '0 0 10px #00ffff';
-                const defaultSection = document.getElementById('technical-books');
+                const defaultSection = document.getElementById('blog');
                 if (defaultSection) {
                     defaultSection.style.display = 'block';
                 }
             }
         }
     };
-
-    // Add hover effect for images
-    const images = document.querySelectorAll('img');
-    images.forEach(img => {
-        img.addEventListener('mouseover', () => {
-            img.style.transform = 'scale(1.2)';
-        });
-        img.addEventListener('mouseout', () => {
-            img.style.transform = 'scale(1)';
-        });
-    });
 </script>
 
 <style>

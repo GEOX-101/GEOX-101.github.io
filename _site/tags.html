@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="/assets/images/favicon.ico" type="image/png">
-    <title>关于</title>
+    <title>Tags</title>
     
     <!-- Styles -->
     <link rel="stylesheet" href="/assets/css/styles.css">
@@ -60,13 +60,13 @@
       </a>
     
       <a href="/tags.html" 
-         
+         class="current"
          style="color: white; text-decoration: none; padding: 0.5rem; text-shadow: 0 0 8px white;">
         标签
       </a>
     
       <a href="/about.html" 
-         class="current"
+         
          style="color: white; text-decoration: none; padding: 0.5rem; text-shadow: 0 0 8px white;">
         关于
       </a>
@@ -94,48 +94,77 @@
     </header>
 
     <main class="container">
-      <h1 id="关于我">关于我</h1>
+      <h1>🏷️ 标记</h1>
 
-<p>欢迎来到我的个人页面！这里你可以了解更多关于我的信息。</p>
-
-<h2 id="简介">简介</h2>
-<p>我是 [你的名字]，一名 [你的职业或身份]，热衷于 [你的兴趣或领域]。</p>
-
-<h2 id="专业背景">专业背景</h2>
-<ul>
-  <li><strong>教育</strong>：[你的学历或学校]</li>
-  <li><strong>工作经历</strong>：[你的工作经历或职位]</li>
-  <li><strong>成就</strong>：[你的主要成就或奖项]</li>
+<ul class="tags-list">
+  
+    <li class="tag-item">
+      <h2 class="tag-title">Java</h2>
+      <ul class="posts-list">
+        
+          <li class="post-item">
+            <a href="/%E7%BC%96%E7%A8%8B/2025/05/03/java%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E5%85%A5%E5%9C%9F.html">Java从入门到入土 📚</a>
+          </li>
+        
+      </ul>
+    </li>
+  
 </ul>
 
-<h2 id="技能">技能</h2>
-<ul>
-  <li>[技能 1]</li>
-  <li>[技能 2]</li>
-  <li>[技能 3]</li>
-</ul>
+<style>
+  .tags-list {
+    list-style: none;
+    padding: 0;
+  }
 
-<h2 id="项目">项目</h2>
-<ul>
-  <li><strong>项目 1</strong>：[项目描述]</li>
-  <li><strong>项目 2</strong>：[项目描述]</li>
-  <li><strong>项目 3</strong>：[项目描述]</li>
-</ul>
+  .tag-item {
+    border: 1px solid #ddd;
+    margin-bottom: 20px;
+    padding: 20px;
+    border-radius: 10px;
+    background-color: #f9f9f9;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
+    transition: transform 0.3s ease;
+  }
 
-<h2 id="兴趣">兴趣</h2>
-<ul>
-  <li>[兴趣 1]</li>
-  <li>[兴趣 2]</li>
-  <li>[兴趣 3]</li>
-</ul>
+  .tag-item:hover {
+    transform: scale(1.05);
+  }
 
-<h2 id="联系方式">联系方式</h2>
-<ul>
-  <li><strong>邮箱</strong>：[你的邮箱地址]</li>
-  <li><strong>GitHub</strong>：[你的 GitHub 链接]</li>
-  <li><strong>LinkedIn</strong>：[你的 LinkedIn 链接]</li>
-</ul>
+  .tag-title {
+    font-size: 1.5em;
+    margin-bottom: 10px;
+  }
 
+  .posts-list {
+    list-style: none;
+    padding-left: 20px;
+  }
+
+  .post-item {
+    margin-bottom: 5px;
+  }
+
+  .post-item a {
+    text-decoration: none;
+    color: #333;
+  }
+
+  .post-item a:hover {
+    color: #007bff;
+  }
+
+  @keyframes typing {
+    from { width: 0; }
+    to { width: 100%; }
+  }
+
+  h1 {
+    overflow: hidden;
+    white-space: nowrap;
+    animation: typing 3.5s steps(40, end);
+  }
+</style>
     </main>
 
     <footer class="site-footer">

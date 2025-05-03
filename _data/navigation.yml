@@ -2,5 +2,9 @@
   link: /
 - name: 我的博客
   link: /blog.html
+- name: 分类
+  link: /categories.html
+- name: 标签
+  link: /tags.html
 - name: 关于
   link: /about.html
