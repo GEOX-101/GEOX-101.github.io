@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="/assets/images/favicon.ico" type="image/png">
-    <title>Categories</title>
+    <title>Java开发框架实战：Spring Boot核心原理与微服务实践</title>
     
     <!-- Styles -->
     <link rel="stylesheet" href="/assets/css/styles.css">
@@ -57,7 +57,7 @@
       </a>
     
       <a href="/categories.html" 
-         class="current"
+         
          style="color: white; text-decoration: none; padding: 0.5rem; text-shadow: 0 0 8px white;">
         分类
       </a>
@@ -201,89 +201,54 @@
     </header>
 
     <main class="container">
-      <h1>📂 分类</h1>
+      <h1>Java开发框架实战：Spring Boot核心原理与微服务实践</h1>
+<p>03 May 2025 - </p>
+<h1 id="spring-boot框架核心特性">Spring Boot框架核心特性</h1>
 
-<ul class="categories-list">
-  
-    <li class="category-item">
-      <h2 class="category-title">编程</h2>
-      <ul class="posts-list">
-        
-          <li class="post-item">
-            <a href="/%E7%BC%96%E7%A8%8B/2025/05/03/java%E8%99%9A%E6%8B%9F%E6%9C%BA%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86.html">Java虚拟机(JVM)深度解析：内存管理与性能调优</a>
-          </li>
-        
-          <li class="post-item">
-            <a href="/%E7%BC%96%E7%A8%8B/2025/05/03/java%E5%BC%80%E5%8F%91%E6%A1%86%E6%9E%B6%E8%AF%A6%E8%A7%A3.html">Java开发框架实战：Spring Boot核心原理与微服务实践</a>
-          </li>
-        
-          <li class="post-item">
-            <a href="/%E7%BC%96%E7%A8%8B/2025/05/03/java%E5%A4%9A%E7%BA%BF%E7%A8%8B%E5%AE%9E%E6%88%98.html">Java多线程实战：从基础到高性能并发编程</a>
-          </li>
-        
-          <li class="post-item">
-            <a href="/%E7%BC%96%E7%A8%8B/2025/05/03/java%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E5%85%A5%E5%9C%9F.html">Java从入门到入土 📚</a>
-          </li>
-        
-      </ul>
-    </li>
-  
-</ul>
+<h2 id="快速启动示例">快速启动示例</h2>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// 主程序入口</span>
+<span class="nd">@SpringBootApplication</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Application</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+        <span class="nc">SpringApplication</span><span class="o">.</span><span class="na">run</span><span class="o">(</span><span class="nc">Application</span><span class="o">.</span><span class="na">class</span><span class="o">,</span> <span class="n">args</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
 
-<style>
-  .categories-list {
-    list-style: none;
-    padding: 0;
-  }
+<h2 id="核心组件">核心组件</h2>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// 控制器示例</span>
+<span class="nd">@RestController</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">HelloController</span> <span class="o">{</span>
+    <span class="nd">@GetMapping</span><span class="o">(</span><span class="s">"/hello"</span><span class="o">)</span>
+    <span class="kd">public</span> <span class="nc">String</span> <span class="nf">sayHello</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="s">"Hello Spring Boot!"</span><span class="o">;</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
 
-  .category-item {
-    border: 1px solid #ddd;
-    margin-bottom: 20px;
-    padding: 20px;
-    border-radius: 10px;
-    background-color: #f9f9f9;
-    box-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
-    transition: transform 0.3s ease;
-  }
+<h2 id="自动配置机制">自动配置机制</h2>
+<div class="language-properties highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># application.properties配置
+</span><span class="py">server.port</span><span class="p">=</span><span class="s">8080</span>
+<span class="py">spring.datasource.url</span><span class="p">=</span><span class="s">jdbc:mysql://localhost:3306/test</span>
+</code></pre></div></div>
 
-  .category-item:hover {
-    transform: scale(1.05);
-  }
+<h1 id="微服务实践">微服务实践</h1>
+<ol>
+  <li><strong>服务注册</strong>：使用Spring Cloud与Eureka</li>
+  <li><strong>配置中心</strong>：结合Spring Cloud Config</li>
+  <li><strong>熔断机制</strong>：Hystrix断路器模式</li>
+</ol>
 
-  .category-title {
-    font-size: 1.5em;
-    margin-bottom: 10px;
-  }
+<h1 id="常见问题">常见问题</h1>
+<p>```java
+// 解决Bean注入问题
+@ComponentScan(basePackages = {“com.example”})</p>
 
-  .posts-list {
-    list-style: none;
-    padding-left: 20px;
-  }
-
-  .post-item {
-    margin-bottom: 5px;
-  }
-
-  .post-item a {
-    text-decoration: none;
-    color: #333;
-  }
-
-  .post-item a:hover {
-    color: #007bff;
-  }
-
-  @keyframes typing {
-    from { width: 0; }
-    to { width: 100%; }
-  }
-
-  h1 {
-    overflow: hidden;
-    white-space: nowrap;
-    animation: typing 3.5s steps(40, end);
-  }
-</style>
+<p>
+    03 May 2025
+    
+    
+</p>
     </main>
 
     <footer class="site-footer">

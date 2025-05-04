@@ -22,6 +22,10 @@
         z-index: -1; /* Place behind other content */
         /* Delete: overflow: hidden; /* Prevent scrolling */
       }
+      /* 新增样式：为 main 增加上边距 */
+      main.container {
+        margin-top: 20px;
+      }
     </style>
    
   </head>
@@ -36,7 +40,7 @@
     </main>
 
     <footer class="site-footer">
-        <p>&copy; {{ site.time | date: '%Y' }} {{ site.title }}. All rights reserved.</p>
+        <p>&copy; {{ site.time | date: '%Y' }} {{ site.title }} {{site.url}}</p>
         {% comment %} Add social media links here {% endcomment %}
     </footer>
 
@@ -56,7 +60,7 @@
       // Resize canvas on window resize
       window.addEventListener('resize', resizeCanvas);
 
-      const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+      const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789abdfjlskjdfeoiwgnpythoncgojavagpt';
       const fontSize = 16;
       const columns = canvas.width / fontSize;
       const drops = [];
@@ -87,5 +91,3 @@
     </script>
   </body>
 </html>
-
-

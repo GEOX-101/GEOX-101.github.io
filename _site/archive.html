@@ -22,6 +22,10 @@
         z-index: -1; /* Place behind other content */
         /* Delete: overflow: hidden; /* Prevent scrolling */
       }
+      /* 新增样式：为 main 增加上边距 */
+      main.container {
+        margin-top: 20px;
+      }
     </style>
    
   </head>
@@ -77,9 +81,9 @@
       </a>
     
   </div>
-  <div class="nav-right" style="display: flex; gap: 1rem; align-items: center;">
+  <div class="nav-right" style="display: flex; gap: 1rem; align-items: center; position: relative;">
     <div id="search-container">
-      <input type="text" id="search-input" placeholder="search...">
+      <input type="text" id="search-input" placeholder="search..." style="width: 200px;"> <!-- 固定宽度 -->
       <ul id="results-container"></ul>
     </div>
     <a href="/profile" 
@@ -99,7 +103,7 @@
   color: rgb(80, 220, 218) !important; /* Added to ensure the color changes */
 }
 #search-input {
-    width: 90%;
+    width: 200px; /* 固定宽度 */
     height: 35px;
     color: #333;
     background-color: rgba(227,231,236,.2);
@@ -129,6 +133,12 @@
     max-height: 300px;
     overflow-y: auto;
     display: none; /* Hide the dropdown by default */
+    width: 200px; /* 固定下拉框宽度与搜索框一致 */
+    height: 200px; /* 固定高度 */
+    position: absolute; /* 绝对定位 */
+    top: 100%; /* 定位在搜索框下方 */
+    left: 0; /* 对齐到搜索框左侧 */
+    z-index: 1000; /* 确保下拉框在其他元素之上 */
 }
 #results-container li {
     list-style: none;
@@ -153,7 +163,7 @@
     searchInput: document.getElementById('search-input'),
     resultsContainer: document.getElementById('results-container'),
     json: '/search.json',
-    searchResultTemplate: '<li><a href="{url}">{title}</a></li>',
+    searchResultTemplate: '<li><a href="{url}" title="{title}">{title}</a></li>', <!-- 添加 title 属性 -->
     noResultsText: '<li>No results found</li>',
     limit: 10,
     fuzzy: true
@@ -199,6 +209,21 @@
     <li class="year">
       <h2>2025</h2>
       <ul class="posts">
+        
+          <li class="post">
+            <span class="date">May 03</span>
+            <a href="/%E7%BC%96%E7%A8%8B/2025/05/03/java%E8%99%9A%E6%8B%9F%E6%9C%BA%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86.html">Java虚拟机(JVM)深度解析：内存管理与性能调优</a>
+          </li>
+        
+          <li class="post">
+            <span class="date">May 03</span>
+            <a href="/%E7%BC%96%E7%A8%8B/2025/05/03/java%E5%BC%80%E5%8F%91%E6%A1%86%E6%9E%B6%E8%AF%A6%E8%A7%A3.html">Java开发框架实战：Spring Boot核心原理与微服务实践</a>
+          </li>
+        
+          <li class="post">
+            <span class="date">May 03</span>
+            <a href="/%E7%BC%96%E7%A8%8B/2025/05/03/java%E5%A4%9A%E7%BA%BF%E7%A8%8B%E5%AE%9E%E6%88%98.html">Java多线程实战：从基础到高性能并发编程</a>
+          </li>
         
           <li class="post">
             <span class="date">May 03</span>
@@ -283,7 +308,7 @@
     </main>
 
     <footer class="site-footer">
-        <p>&copy; 2025 grobob101的博客. All rights reserved.</p>
+        <p>&copy; 2025 grobob101的博客 http://0.0.0.0:4000</p>
         
     </footer>
 
@@ -303,7 +328,7 @@
       // Resize canvas on window resize
       window.addEventListener('resize', resizeCanvas);
 
-      const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+      const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789abdfjlskjdfeoiwgnpythoncgojavagpt';
       const fontSize = 16;
       const columns = canvas.width / fontSize;
       const drops = [];
@@ -334,5 +359,3 @@
     </script>
   </body>
 </html>
-
-

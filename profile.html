@@ -9,7 +9,7 @@ title: Profile
     <img src="/assets/images/avator/avator.png" alt="Profile Picture" class="profile-picture">
     <div class="profile-info">
         <h2>用户名: grobob101</h2>
-        <p>邮箱: grobob101@example.com</p>
+        <p>邮箱: 2552831709@qq.com</p>
         <p>简介: 热爱编程与分享的技术爱好者</p>
     </div>
 </div>
@@ -27,6 +27,7 @@ title: Profile
         height: 150px;
         border-radius: 100px;
         box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+        transition: transform 0.3s ease;
     }
 
     .profile-info {
@@ -42,5 +43,8 @@ title: Profile
         overflow: hidden;
         white-space: nowrap;
         animation: typing 3.5s steps(40, end);
+    }
+    .profile-picture:hover {
+        transform: scale(1.1);
     }
 </style>
