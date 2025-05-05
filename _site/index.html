@@ -227,6 +227,7 @@
             <a href="#technical-books" onclick="setActive(this)" style="text-decoration: none; color: white; padding: 10px; margin: 5px 0; background-color: black; border-radius: 5px; text-shadow: 0 0 5px white, 0 0 10px white;">书籍收藏</a>
             <a href="#ai-tools" onclick="setActive(this)" style="text-decoration: none; color: white; padding: 10px; margin: 5px 0; background-color: black; border-radius: 5px; text-shadow: 0 0 5px white, 0 0 10px white;">AI工具</a>
             <a href="#interview-practice" onclick="setActive(this)" style="text-decoration: none; color: white; padding: 10px; margin: 5px 0; background-color: black; border-radius: 5px; text-shadow: 0 0 5px white, 0 0 10px white;">技术面试练习</a>
+            <a href="#technology-consult" onclick="setActive(this)" style="text-decoration: none; color: white; padding: 10px; margin: 5px 0; background-color: black; border-radius: 5px; text-shadow: 0 0 5px white, 0 0 10px white;">科技咨询</a>
         </div>
     </div>
 
@@ -236,42 +237,71 @@
         <section id="technical-books" style="display: none;">
             <h2>书籍收藏</h2>
             <div style="display: flex; flex-wrap: wrap;">
-                <a href="./object/机器学习.pdf" target="_blank">
-                    <img src="./assets/images/books/machineLearning.png" alt="机器学习" class="book-image">
-                </a>
-                <a href="./object/模式识别.pdf" target="_blank">
-                    <img src="./assets/images/books/模式识别.png" alt="模式识别" class="book-image">
-                </a>
+                <div style="display: flex; flex-direction: column; align-items: center; justify-content: center;">
+                    <a href="./object/机器学习.pdf" target="_blank">
+                        <img src="./assets/images/books/machineLearning.png" alt="机器学习" class="book-image">
+                    </a>
+                    <div style="font-weight: bold; text-align: center;">机器学习</div>
+                </div>
+                <div style="display: flex; flex-direction: column; align-items: center; justify-content: center;">
+                    <a href="./object/模式识别.pdf" target="_blank">
+                        <img src="./assets/images/books/模式识别.png" alt="模式识别" class="book-image">
+                    </a>
+                    <div style="font-weight: bold; text-align: center;">模式识别</div>
+                </div>
                 <!-- Add more books as needed -->
             </div>
         </section>
         <section id="ai-tools" style="display: none;">
             <h2>AI工具</h2>
             <div style="display: flex; flex-wrap: wrap;">
-                <a href="https://chat.deepseek.com/" target="_blank">
-                    <img src="./assets/images/ai-tools/deepseek.png" alt="deepseek" class="ai-tool-image">
-                </a>
-                <a href="https://metaso.cn/?s=itaber&referrer_s=itaber" target="_blank">
-                    <img src="./assets/images/ai-tools/metaso.png" alt="Tool 2" class="ai-tool-image">
-                </a>
+                <div style="display: flex; flex-direction: column; align-items: center; justify-content: center;">
+                    <a href="https://chat.deepseek.com/" target="_blank">
+                        <img src="./assets/images/ai-tools/deepseek.png" alt="deepseek" class="ai-tool-image">
+                    </a>
+                    <div style="font-weight: bold; text-align: center;">DeepSeek</div>
+                </div>
+                <div style="display: flex; flex-direction: column; align-items: center; justify-content: center;">
+                    <a href="https://metaso.cn/?s=itaber&referrer_s=itaber" target="_blank">
+                        <img src="./assets/images/ai-tools/metaso.png" alt="Tool 2" class="ai-tool-image">
+                    </a>
+                    <div style="font-weight: bold; text-align: center;">MetaSo</div>
+                </div>
                 <!-- Add more tools as needed -->
             </div>
         </section>
         <section id="interview-practice" style="display: none;">
             <h2>技术面试练习</h2>
             <div style="display: flex; flex-wrap: wrap;">
-                <a href="https://javaguide.cn/" target="_blank">
-                    <img src="/assets/images/coding-learn/javaguide.png" alt="javaguide" class="interview-image">
-                </a>
-                <a href="https://xiaolincoding.com/" target="_blank">
-                    <img src="/assets/images/coding-learn/小林coding.png" alt="小林coding" class="interview-image">
-                </a>
+                <div style="display: flex; flex-direction: column; align-items: center; justify-content: center;">
+                    <a href="https://javaguide.cn/" target="_blank">
+                        <img src="/assets/images/coding-learn/javaguide.png" alt="javaguide" class="interview-image">
+                    </a>
+                    <div style="font-weight: bold; text-align: center;">JavaGuide</div>
+                </div>
+                <div style="display: flex; flex-direction: column; align-items: center; justify-content: center;">
+                    <a href="https://xiaolincoding.com/" target="_blank">
+                        <img src="/assets/images/coding-learn/小林coding.png" alt="小林coding" class="interview-image">
+                    </a>
+                    <div style="font-weight: bold; text-align: center;">小林coding</div>
+                </div>
                 <!-- Add more interview materials as needed -->
             </div>
         </section>
-
-    </div>
+        <section id="technology-consult" style="display: none;">
+            <h2>科技咨询</h2>
+            <div style="display: flex; flex-wrap: wrap;">
+                <!-- 这里可以添加类似AI工具的图片链接 -->
+                <div style="display: flex; flex-direction: column; align-items: center; justify-content: center;">
+                    <a href="https://www.c114.net.cn/ainews/" target="_blank">
+                        <img src="./assets/images/news/C11.png" alt="科技咨询工具" class="ai-tool-image">
+                    </a>
+                    <div style="font-weight: bold; text-align: center;">C114直达</div>
+                </div>
+            </div>
+        </section>
 </div>
+         
 
 <script>
     function setActive(element) {
@@ -334,6 +364,7 @@
         width: 200px;
         height: 200px;
         border-radius: 10px;
+        
         transition: transform 0.3s ease;
         box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.3);
         margin-right: 30px; /* Add 30px spacing between images */
@@ -394,7 +425,6 @@
         animation: typing 3.5s steps(40, end), fadeOut 1s 3.5s forwards;
         margin-bottom: 20px;
     }
-
 </style>
     </main>
 
