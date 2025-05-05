@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="/assets/images/favicon.ico" type="image/png">
-    <title>关于</title>
+    <title>grobob101的博客</title>
     
     <!-- Styles -->
     <link rel="stylesheet" href="/assets/css/styles.css">
@@ -91,7 +91,7 @@
       <img src="/assets/images/avator/avator.png" 
            alt="Profile" 
            class="profile-avatar"
-           width="30" height="30"
+           width="50" height="50"
            style="border-radius: 100px; margin-right: 0.5rem;">
     </a>
   </div>
@@ -153,8 +153,9 @@
     text-decoration: none;
 }
 #results-container li a:hover {
-    color: #007fff;
+    color: #68d0ce;
 }
+
 </style>
 
 <script src="https://unpkg.com/simple-jekyll-search@latest/dest/simple-jekyll-search.min.js"></script>
@@ -166,8 +167,23 @@
     searchResultTemplate: '<li><a href="{url}" title="{title}">{title}</a></li>', <!-- 添加 title 属性 -->
     noResultsText: '<li>No results found</li>',
     limit: 10,
-    fuzzy: true
+    fuzzy: true,
+    onAfterDisplay: function(results) {
+      const keyword = document.getElementById('search-input').value.trim();
+      if (keyword) {
+        highlightKeyword(keyword);
+      }
+    }
   });
+
+  function highlightKeyword(keyword) {
+    const results = document.querySelectorAll('#results-container li a');
+    results.forEach(result => {
+      const title = result.textContent;
+      const highlightedTitle = title.replace(new RegExp(keyword, 'gi'), match => `<span class="highlight">${match}</span>`);
+      result.innerHTML = highlightedTitle;
+    });
+  }
 
   // Add event listener to handle search input changes
   document.getElementById('search-input').addEventListener('input', function() {
@@ -201,52 +217,73 @@
     </header>
 
     <main class="container">
-      <h1 id="关于我">关于我</h1>
+      <h1 id="关于本站-">关于本站 🚀</h1>
 
-<p>欢迎来到我的个人页面！这里你可以了解更多关于我的信息。</p>
+<p>欢迎来到我的Jekyll博客！本站采用<strong>Roo Code</strong>与<strong>TongYilingma</strong>基于qwq模型搭建，旨在分享技术知识与学习经验。以下是站点结构与功能的详细介绍：</p>
 
-<h2 id="简介">简介</h2>
-<p>我是 [你的名字]，一名 [你的职业或身份]，热衷于 [你的兴趣或领域]。</p>
+<h2 id="站点页面导航-">站点页面导航 🌐</h2>
 
-<h2 id="专业背景">专业背景</h2>
+<ol>
+  <li>
+    <p><strong>主页 (index.html)</strong><br />
+首页展示一些书籍和AI工具以及技术面试练习网站</p>
+  </li>
+  <li>
+    <p><strong>我的博客 (blog.html)</strong><br />
+所有文章的汇总页面，按时间倒序排列，方便快速浏览最新内容。</p>
+  </li>
+  <li>
+    <p><strong>分类 (categories.html)</strong><br />
+按技术领域分类的文章索引，例如”编程”、”机器学习”等。</p>
+  </li>
+  <li>
+    <p><strong>标签归档 (tags.html)</strong><br />
+通过标签快速查找相关文章，支持多标签组合查询，归档可查看发布博客的日期</p>
+  </li>
+  <li>
+    <p><strong>关于 (about.md)</strong><br />
+当前页面，介绍站点架构、功能及开发者信息。</p>
+  </li>
+</ol>
+
+<h2 id="目录结构示例-">目录结构示例 📂</h2>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>/workspaces/my_jekyll_learn/
+├── _posts/          # 文章目录
+├── _layouts/        # 页面模板
+├── assets/          # 静态资源
+│   └── css/         # 样式文件
+│   └── images/      # 图片资源
+└── about.md         # 当前页面
+</code></pre></div></div>
+
+<h2 id="搜索功能-">搜索功能 🔍</h2>
 <ul>
-  <li><strong>教育</strong>：[你的学历或学校]</li>
-  <li><strong>工作经历</strong>：[你的工作经历或职位]</li>
-  <li><strong>成就</strong>：[你的主要成就或奖项]</li>
+  <li><strong>实现文件</strong>：<code class="language-plaintext highlighter-rouge">search.json</code>（数据源）和<code class="language-plaintext highlighter-rouge">assets/css/search.css</code>（样式）</li>
+  <li><strong>使用方法</strong>：输入关键词即可快速定位文章内容</li>
+  <li><strong>技术细节</strong>：基于Jekyll内置搜索功能优化实现</li>
 </ul>
 
-<h2 id="技能">技能</h2>
+<h2 id="不足与展望-">不足与展望 😔</h2>
 <ul>
-  <li>[技能 1]</li>
-  <li>[技能 2]</li>
-  <li>[技能 3]</li>
+  <li><strong>当前不足</strong>：
+    <ol>
+      <li>搜索功能对长文本响应较慢</li>
+      <li>图表交互性不足（如目录结构仅为文本描述）</li>
+      <li>移动端适配需进一步优化</li>
+    </ol>
+  </li>
+  <li><strong>未来计划</strong>：
+🌟 加入动态图表展示<br />
+🛠️ 优化搜索算法提升速度<br />
+📱 完善响应式设计</li>
 </ul>
 
-<h2 id="项目">项目</h2>
-<ul>
-  <li><strong>项目 1</strong>：[项目描述]</li>
-  <li><strong>项目 2</strong>：[项目描述]</li>
-  <li><strong>项目 3</strong>：[项目描述]</li>
-</ul>
-
-<h2 id="兴趣">兴趣</h2>
-<ul>
-  <li>[兴趣 1]</li>
-  <li>[兴趣 2]</li>
-  <li>[兴趣 3]</li>
-</ul>
-
-<h2 id="联系方式">联系方式</h2>
-<ul>
-  <li><strong>邮箱</strong>：[你的邮箱地址]</li>
-  <li><strong>GitHub</strong>：[你的 GitHub 链接]</li>
-  <li><strong>LinkedIn</strong>：[你的 LinkedIn 链接]</li>
-</ul>
+<hr />
 
     </main>
 
     <footer class="site-footer">
-        <p>&copy; 2025 grobob101的博客 http://0.0.0.0:4000</p>
+        <p>&copy; 2025 grobob101的博客</p>
         
     </footer>
 

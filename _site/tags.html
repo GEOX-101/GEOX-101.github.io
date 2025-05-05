@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="/assets/images/favicon.ico" type="image/png">
-    <title>Tags</title>
+    <title>grobob101的博客</title>
     
     <!-- Styles -->
     <link rel="stylesheet" href="/assets/css/styles.css">
@@ -91,7 +91,7 @@
       <img src="/assets/images/avator/avator.png" 
            alt="Profile" 
            class="profile-avatar"
-           width="30" height="30"
+           width="50" height="50"
            style="border-radius: 100px; margin-right: 0.5rem;">
     </a>
   </div>
@@ -153,8 +153,9 @@
     text-decoration: none;
 }
 #results-container li a:hover {
-    color: #007fff;
+    color: #68d0ce;
 }
+
 </style>
 
 <script src="https://unpkg.com/simple-jekyll-search@latest/dest/simple-jekyll-search.min.js"></script>
@@ -166,8 +167,23 @@
     searchResultTemplate: '<li><a href="{url}" title="{title}">{title}</a></li>', <!-- 添加 title 属性 -->
     noResultsText: '<li>No results found</li>',
     limit: 10,
-    fuzzy: true
+    fuzzy: true,
+    onAfterDisplay: function(results) {
+      const keyword = document.getElementById('search-input').value.trim();
+      if (keyword) {
+        highlightKeyword(keyword);
+      }
+    }
   });
+
+  function highlightKeyword(keyword) {
+    const results = document.querySelectorAll('#results-container li a');
+    results.forEach(result => {
+      const title = result.textContent;
+      const highlightedTitle = title.replace(new RegExp(keyword, 'gi'), match => `<span class="highlight">${match}</span>`);
+      result.innerHTML = highlightedTitle;
+    });
+  }
 
   // Add event listener to handle search input changes
   document.getElementById('search-input').addEventListener('input', function() {
@@ -287,7 +303,7 @@
     </main>
 
     <footer class="site-footer">
-        <p>&copy; 2025 grobob101的博客 http://0.0.0.0:4000</p>
+        <p>&copy; 2025 grobob101的博客</p>
         
     </footer>
 

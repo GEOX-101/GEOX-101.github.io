@@ -2,7 +2,7 @@ title: grobob101的博客
 description: >-
   抽象从不抽象
 url: "https://www.github.com/grobob101" # 替换为你的域名
-baseurl: "" # 如果你的网站不在根目录，设置子目录路
+baseurl: "https://www.github.com/grobob101" # 如果你的网站不在根目录，设置子目录路
 
 # 构建设置
 markdown: kramdown
