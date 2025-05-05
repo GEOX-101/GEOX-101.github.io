@@ -75,7 +75,7 @@
       </a>
     
       <a href="/about.html" 
-         class="current"
+         
          style="color: white; text-decoration: none; padding: 0.5rem; text-shadow: 0 0 8px white;">
         关于
       </a>
@@ -217,69 +217,141 @@
     </header>
 
     <main class="container">
-      <h1 id="关于本站-">关于本站 🚀</h1>
+      <h1>一个网络连接的奇妙旅程</h1>
+<p>05 May 2025 - grobob101</p>
+<h1 id="-一个网络连接的奇妙旅程">🚀 一个网络连接的奇妙旅程</h1>
 
-<p>欢迎来到我的Jekyll博客！本站采用<strong>Roo Code</strong>与<strong>TongYilingma</strong>基于qwq模型搭建，旨在分享技术知识与学习经验。以下是站点结构与功能的详细介绍：</p>
+<h2 id="-服务端城堡的诞生">🏰 服务端城堡的诞生</h2>
 
-<h2 id="站点页面导航-">站点页面导航 🌐</h2>
+<p><strong>场景</strong>：服务端守护者在80端口城堡门口点亮灯笼（<code class="language-plaintext highlighter-rouge">socket()</code>创建套接字）：</p>
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">sockfd</span> <span class="o">=</span> <span class="n">socket</span><span class="p">(</span><span class="n">AF_INET</span><span class="p">,</span> <span class="n">SOCK_STREAM</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span>
+</code></pre></div></div>
+
+<p><strong>守护者动作</strong>：用魔法将灯笼绑在80号城门（<code class="language-plaintext highlighter-rouge">bind()</code>绑定端口）：</p>
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">struct</span> <span class="n">sockaddr_in</span> <span class="n">server_addr</span> <span class="o">=</span> <span class="p">{</span> 
+    <span class="p">.</span><span class="n">sin_family</span> <span class="o">=</span> <span class="n">AF_INET</span><span class="p">,</span>
+    <span class="p">.</span><span class="n">sin_port</span> <span class="o">=</span> <span class="n">htons</span><span class="p">(</span><span class="mi">80</span><span class="p">),</span>
+    <span class="p">.</span><span class="n">sin_addr</span><span class="p">.</span><span class="n">s_addr</span> <span class="o">=</span> <span class="n">INADDR_ANY</span> 
+<span class="p">};</span>
+<span class="n">bind</span><span class="p">(</span><span class="n">sockfd</span><span class="p">,</span> <span class="p">(</span><span class="k">struct</span> <span class="n">sockaddr</span><span class="o">*</span><span class="p">)</span><span class="o">&amp;</span><span class="n">server_addr</span><span class="p">,</span> <span class="k">sizeof</span><span class="p">(</span><span class="n">server_addr</span><span class="p">));</span>
+</code></pre></div></div>
+
+<h2 id="-监听的开始">🎧 监听的开始</h2>
+
+<p><strong>守护者吟唱</strong>：启动监听模式（<code class="language-plaintext highlighter-rouge">listen()</code>设置队列），允许最多50个骑士等待：</p>
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">listen</span><span class="p">(</span><span class="n">sockfd</span><span class="p">,</span> <span class="mi">50</span><span class="p">);</span> <span class="c1">// 队列最大容纳50位骑士</span>
+</code></pre></div></div>
+
+<h2 id="-客户端骑士的敲门">🚪 客户端骑士的敲门</h2>
+
+<p><strong>骑士行动</strong>：客户端骑士从远方（<code class="language-plaintext highlighter-rouge">connect()</code>）发起冲锋：</p>
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">client_sock</span> <span class="o">=</span> <span class="n">socket</span><span class="p">(</span><span class="n">AF_INET</span><span class="p">,</span> <span class="n">SOCK_STREAM</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span>
+<span class="n">connect</span><span class="p">(</span><span class="n">client_sock</span><span class="p">,</span> <span class="n">server_addr</span><span class="p">,</span> <span class="k">sizeof</span><span class="p">(</span><span class="n">server_addr</span><span class="p">));</span>
+</code></pre></div></div>
+
+<h2 id="-守护者的三重检查">🔒 守护者的三重检查</h2>
 
 <ol>
-  <li>
-    <p><strong>主页 (index.html)</strong><br />
-首页展示一些书籍和AI工具以及技术面试练习，科技咨询网站</p>
-  </li>
-  <li>
-    <p><strong>我的博客 (blog.html)</strong><br />
-所有文章的汇总页面，按时间倒序排列，方便快速浏览最新内容。</p>
-  </li>
-  <li>
-    <p><strong>分类 (categories.html)</strong><br />
-按技术领域分类的文章索引，例如”编程”、”机器学习”等。</p>
-  </li>
-  <li>
-    <p><strong>标签归档 (tags.html)</strong><br />
-通过标签快速查找相关文章，支持多标签组合查询，归档可查看发布博客的日期</p>
-  </li>
-  <li>
-    <p><strong>关于 (about.md)</strong><br />
-当前页面，介绍站点架构、功能及开发者信息。</p>
+  <li><strong>端口检查</strong>：确认80号城门已点亮灯笼（是否调用<code class="language-plaintext highlighter-rouge">listen</code>）</li>
+  <li><strong>队列检查</strong>：查看等待区是否已满（队列长度是否达上限）</li>
+  <li><strong>攻击检测</strong>：
+    <ul>
+      <li><strong>SYN洪水攻击</strong>：突然涌来1000个骑士却不愿进入（半连接队列溢出）</li>
+      <li><strong>恶意连接</strong>：伪装成骑士实则是狼群（需要防火墙拦截）</li>
+    </ul>
   </li>
 </ol>
 
-<h2 id="目录结构示例-">目录结构示例 📂</h2>
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>/workspaces/my_jekyll_learn/
-├── _posts/          # 文章目录
-├── _layouts/        # 页面模板
-├── assets/          # 静态资源
-│   └── css/         # 样式文件
-│   └── images/      # 图片资源
-└── about.md         # 当前页面
+<h2 id="️-接受连接的魔法">🛡️ 接受连接的魔法</h2>
+
+<p>当骑士通过检查，守护者施展<code class="language-plaintext highlighter-rouge">accept()</code>魔法：</p>
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">new_sock</span> <span class="o">=</span> <span class="n">accept</span><span class="p">(</span><span class="n">sockfd</span><span class="p">,</span> <span class="nb">NULL</span><span class="p">,</span> <span class="nb">NULL</span><span class="p">);</span> <span class="c1">// 获取新连接通道</span>
 </code></pre></div></div>
-
-<h2 id="搜索功能-">搜索功能 🔍</h2>
+<p>此刻：</p>
 <ul>
-  <li><strong>实现文件</strong>：<code class="language-plaintext highlighter-rouge">search.json</code>（数据源）和<code class="language-plaintext highlighter-rouge">assets/css/search.css</code>（样式）</li>
-  <li><strong>使用方法</strong>：输入关键词即可快速定位文章内容</li>
-  <li><strong>技术细节</strong>：基于Jekyll内置搜索功能优化实现</li>
-</ul>
-
-<h2 id="不足与展望-">不足与展望 😔</h2>
-<ul>
-  <li><strong>当前不足</strong>：
-    <ol>
-      <li>搜索功能对长文本响应较慢</li>
-      <li>图表交互性不足（如目录结构仅为文本描述）</li>
-      <li>移动端适配需进一步优化</li>
-    </ol>
-  </li>
-  <li><strong>未来计划</strong>：
-🌟 加入动态图表展示<br />
-🛠️ 优化搜索算法提升速度<br />
-📱 完善响应式设计</li>
+  <li>新通道<code class="language-plaintext highlighter-rouge">new_sock</code>记录骑士的所有信息（IP、端口）</li>
+  <li>队列中移除该骑士（腾出位置给新骑士）</li>
 </ul>
 
 <hr />
 
+<h2 id="-不同io模型的处理艺术">🌍 不同IO模型的处理艺术</h2>
+
+<h3 id="-select模式轮询巡查">🔄 Select模式（轮询巡查）</h3>
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">FD_SET</span><span class="p">(</span><span class="n">sockfd</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">readfds</span><span class="p">);</span>
+<span class="n">select</span><span class="p">(</span><span class="n">max_fd</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">readfds</span><span class="p">,</span> <span class="nb">NULL</span><span class="p">,</span> <span class="nb">NULL</span><span class="p">,</span> <span class="nb">NULL</span><span class="p">);</span>
+</code></pre></div></div>
+<p><strong>流程</strong>：</p>
+<ol>
+  <li>守护者每5秒环顾所有城门（轮询）</li>
+  <li>发现新骑士时处理（效率低，适合少量连接）</li>
+</ol>
+
+<h3 id="-epoll模式智能信使">🚀 Epoll模式（智能信使）</h3>
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">epoll_ctl</span><span class="p">(</span><span class="n">epoll_fd</span><span class="p">,</span> <span class="n">EPOLL_CTL_ADD</span><span class="p">,</span> <span class="n">sockfd</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">ev</span><span class="p">);</span>
+<span class="n">epoll_wait</span><span class="p">(</span><span class="n">epoll_fd</span><span class="p">,</span> <span class="n">events</span><span class="p">,</span> <span class="n">MAX_EVENTS</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">);</span>
+</code></pre></div></div>
+<p><strong>流程</strong>：</p>
+<ol>
+  <li>安排信使监视所有城门</li>
+  <li>信使主动报告有骑士到达（高效处理成千上万连接）</li>
+</ol>
+
+<h3 id="-reactor模式反应堆">⚡ Reactor模式（反应堆）</h3>
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">dispatcher</span><span class="p">.</span><span class="n">dispatch</span><span class="p">(</span><span class="n">new</span> <span class="nf">ConnectionEvent</span><span class="p">());</span>
+</code></pre></div></div>
+<p><strong>流程</strong>：</p>
+<ol>
+  <li>主线程监听所有事件</li>
+  <li>事件到达时派发给工作线程处理</li>
+</ol>
+
+<hr />
+
+<h2 id="-技术要点总结">📝 技术要点总结</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>阶段</th>
+      <th>关键函数</th>
+      <th>安全机制</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>建立连接</td>
+      <td>socket()</td>
+      <td>防火墙IP过滤</td>
+    </tr>
+    <tr>
+      <td>绑定端口</td>
+      <td>bind()</td>
+      <td>端口白名单</td>
+    </tr>
+    <tr>
+      <td>开始监听</td>
+      <td>listen()</td>
+      <td>SYN Cookies防御洪水</td>
+    </tr>
+    <tr>
+      <td>接受连接</td>
+      <td>accept()</td>
+      <td>TLS加密通道</td>
+    </tr>
+  </tbody>
+</table>
+
+<hr />
+
+<h2 id="-结语">🌟 结语</h2>
+<p>每个连接就像一位骑士的朝圣之旅，服务端城堡用不同的策略（select/epoll）守护着网络安全，确保每一份数据都能安全抵达目的地！</p>
+
+<p>
+    05 May 2025
+    
+    
+</p>
     </main>
 
     <footer class="site-footer">
