@@ -1,4 +1,157 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.4.1">Jekyll</generator><link href="http://0.0.0.0:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://0.0.0.0:4000/" rel="alternate" type="text/html" /><updated>2025-05-05T06:09:02+00:00</updated><id>http://0.0.0.0:4000/feed.xml</id><title type="html">grobob101的博客</title><subtitle>抽象从不抽象</subtitle><author><name>王国伟</name><email>2552831709@qq.com</email></author><entry><title type="html">一个网络连接的奇妙旅程</title><link href="http://0.0.0.0:4000/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/2025/05/05/%E4%B8%80%E4%B8%AA%E7%BD%91%E7%BB%9C%E8%BF%9E%E6%8E%A5%E6%98%AF%E6%80%8E%E4%B9%88%E8%A2%AB%E5%A4%84%E7%90%86%E7%9A%84.html" rel="alternate" type="text/html" title="一个网络连接的奇妙旅程" /><published>2025-05-05T00:00:00+00:00</published><updated>2025-05-05T00:00:00+00:00</updated><id>http://0.0.0.0:4000/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/2025/05/05/%E4%B8%80%E4%B8%AA%E7%BD%91%E7%BB%9C%E8%BF%9E%E6%8E%A5%E6%98%AF%E6%80%8E%E4%B9%88%E8%A2%AB%E5%A4%84%E7%90%86%E7%9A%84</id><content type="html" xml:base="http://0.0.0.0:4000/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/2025/05/05/%E4%B8%80%E4%B8%AA%E7%BD%91%E7%BB%9C%E8%BF%9E%E6%8E%A5%E6%98%AF%E6%80%8E%E4%B9%88%E8%A2%AB%E5%A4%84%E7%90%86%E7%9A%84.html"><![CDATA[<h1 id="-一个网络连接的奇妙旅程">🚀 一个网络连接的奇妙旅程</h1>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.4.1">Jekyll</generator><link href="http://0.0.0.0:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://0.0.0.0:4000/" rel="alternate" type="text/html" /><updated>2025-05-07T03:14:31+00:00</updated><id>http://0.0.0.0:4000/feed.xml</id><title type="html">grobob101的博客</title><subtitle>抽象从不抽象</subtitle><author><name>王国伟</name><email>2552831709@qq.com</email></author><entry><title type="html">寻找旋转排序数组中的最小值</title><link href="http://0.0.0.0:4000/%E7%AE%97%E6%B3%95/2025/05/07/leetcode153%E5%AF%BB%E6%89%BE%E6%97%8B%E8%BD%AC%E6%8E%92%E5%BA%8F%E6%9C%80%E5%B0%8F%E5%80%BC.html" rel="alternate" type="text/html" title="寻找旋转排序数组中的最小值" /><published>2025-05-07T00:00:00+00:00</published><updated>2025-05-07T00:00:00+00:00</updated><id>http://0.0.0.0:4000/%E7%AE%97%E6%B3%95/2025/05/07/leetcode153%E5%AF%BB%E6%89%BE%E6%97%8B%E8%BD%AC%E6%8E%92%E5%BA%8F%E6%9C%80%E5%B0%8F%E5%80%BC</id><content type="html" xml:base="http://0.0.0.0:4000/%E7%AE%97%E6%B3%95/2025/05/07/leetcode153%E5%AF%BB%E6%89%BE%E6%97%8B%E8%BD%AC%E6%8E%92%E5%BA%8F%E6%9C%80%E5%B0%8F%E5%80%BC.html"><![CDATA[<p><a href="https://leetcode.cn/problems/find-minimum-in-rotated-sorted-array/description/?envType=study-plan-v2&amp;envId=top-100-liked">153. 寻找旋转排序数组中的最小值 - 力扣（LeetCode）</a></p>
+
+<p>:::color2
+题目描述：<br />
+已知一个长度为 n 的数组，预先按照升序排列，经由 1 到 n 次 旋转 后，得到输入数组。例如，原数组 nums = [0,1,2,4,5,6,7] 在变化后可能得到：<br />
+若旋转 4 次，则可以得到 [4,5,6,7,0,1,2]<br />
+若旋转 7 次，则可以得到 [0,1,2,4,5,6,7]<br />
+注意，数组 [a[0], a[1], a[2], …, a[n-1]] 旋转一次 的结果为数组 [a[n-1], a[0], a[1], a[2], …, a[n-2]] 。</p>
+
+<p>给你一个元素值 互不相同 的数组 nums ，它原来是一个升序排列的数组，并按上述情形进行了多次旋转。请你找出并返回数组中的 最小元素 。</p>
+
+<p>你必须设计一个时间复杂度为 O(log n) 的算法解决此问题。</p>
+
+<p>:::</p>
+
+<pre><code class="language-plain">示例 1：
+输入：nums = [3,4,5,1,2]
+输出：1
+解释：原数组为 [1,2,3,4,5] ，旋转 3 次得到输入数组。
+示例 2：
+输入：nums = [4,5,6,7,0,1,2]
+输出：0
+解释：原数组为 [0,1,2,4,5,6,7] ，旋转 4 次得到输入数组。
+</code></pre>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">class</span> <span class="nc">Solution</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kt">int</span> <span class="nf">findMin</span><span class="o">(</span><span class="kt">int</span><span class="o">[]</span> <span class="n">nums</span><span class="o">)</span> <span class="o">{</span>
+        <span class="kt">int</span> <span class="n">l</span><span class="o">=</span><span class="mi">0</span><span class="o">,</span><span class="n">r</span><span class="o">=</span><span class="n">nums</span><span class="o">.</span><span class="na">length</span><span class="o">-</span><span class="mi">1</span><span class="o">;</span>
+        <span class="k">while</span><span class="o">(</span><span class="n">l</span><span class="o">&lt;</span><span class="n">r</span><span class="o">){</span>
+            <span class="kt">int</span> <span class="n">mid</span><span class="o">=(</span><span class="n">l</span><span class="o">+</span><span class="n">r</span><span class="o">)&gt;&gt;</span><span class="mi">1</span><span class="o">;</span>
+            <span class="k">if</span><span class="o">(</span><span class="n">nums</span><span class="o">[</span><span class="n">mid</span><span class="o">]&lt;=</span><span class="n">nums</span><span class="o">[</span><span class="n">r</span><span class="o">]){</span>
+                <span class="n">r</span><span class="o">=</span><span class="n">mid</span><span class="o">;</span>
+            <span class="o">}</span><span class="k">else</span><span class="o">{</span>
+                <span class="n">l</span><span class="o">=</span><span class="n">mid</span><span class="o">+</span><span class="mi">1</span><span class="o">;</span>
+            <span class="o">}</span>
+        <span class="o">}</span>
+        <span class="k">return</span> <span class="n">nums</span><span class="o">[</span><span class="n">r</span><span class="o">];</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p><strong>代码解释</strong></p>
+
+<p>:::warning
+初始化两个指针：l指向数组的起始位置，r指向数组的末尾位置。</p>
+
+<p>使用while循环进行二分查找，直到l和r相遇：</p>
+
+<p>计算中间位置mid，即(l + r) » 1（相当于(l + r) / 2）<br />
+如果nums[mid]小于等于nums[r]，说明最小值在左半&gt;部分，将r移动到mid位置<br />
+否则，说明最小值在右半部分，将l移动到mid + 1位置<br />
+当循环结束时，l和r指向同一个位置，这个位置就是最&gt;小值所在的位置，返回nums[r]即可。</p>
+
+<p>:::</p>]]></content><author><name>grobob101</name></author><category term="算法" /><category term="分治" /><summary type="html"><![CDATA[153. 寻找旋转排序数组中的最小值 - 力扣（LeetCode）]]></summary></entry><entry><title type="html">多线程实战</title><link href="http://0.0.0.0:4000/%E5%A4%9A%E7%BA%BF%E7%A8%8B/2025/05/06/%E5%A4%9A%E7%BA%BF%E7%A8%8B%E5%AE%9E%E6%88%98.html" rel="alternate" type="text/html" title="多线程实战" /><published>2025-05-06T00:00:00+00:00</published><updated>2025-05-06T00:00:00+00:00</updated><id>http://0.0.0.0:4000/%E5%A4%9A%E7%BA%BF%E7%A8%8B/2025/05/06/%E5%A4%9A%E7%BA%BF%E7%A8%8B%E5%AE%9E%E6%88%98</id><content type="html" xml:base="http://0.0.0.0:4000/%E5%A4%9A%E7%BA%BF%E7%A8%8B/2025/05/06/%E5%A4%9A%E7%BA%BF%E7%A8%8B%E5%AE%9E%E6%88%98.html"><![CDATA[<h1 id="java-aqsabstractqueuedsynchronizer详解">Java AQS（AbstractQueuedSynchronizer）详解</h1>
+
+<p>本文深入探讨Java中的AQS（AbstractQueuedSynchronizer），涵盖以下内容：</p>
+
+<h2 id="1-aqs概述">1. AQS概述</h2>
+
+<p>AQS是Java并发包中的核心组件，用于构建锁和同步器的基础框架。它通过一个FIFO队列管理线程的排队，并提供了一套标准的API来实现各种同步工具，如ReentrantLock、CountDownLatch等。</p>
+
+<hr />
+
+<h2 id="2-管理状态方法">2. 管理状态方法</h2>
+
+<p>AQS使用一个<code class="language-plaintext highlighter-rouge">volatile int state</code>变量表示同步状态，以下是三个核心方法：</p>
+
+<ul>
+  <li>
+    <p><strong><code class="language-plaintext highlighter-rouge">getState()</code></strong><br />
+获取当前同步状态。</p>
+  </li>
+  <li>
+    <p><strong><code class="language-plaintext highlighter-rouge">setState(int newState)</code></strong><br />
+设置同步状态，直接修改<code class="language-plaintext highlighter-rouge">state</code>值。</p>
+  </li>
+  <li>
+    <p><strong><code class="language-plaintext highlighter-rouge">compareAndSetState(int expect, int update)</code></strong><br />
+使用CAS操作原子性地更新状态。</p>
+  </li>
+</ul>
+
+<hr />
+
+<h2 id="3-可重写方法">3. 可重写方法</h2>
+
+<p>AQS提供了以下五个可重写的方法，子类需要根据需求实现这些方法：</p>
+
+<ul>
+  <li>
+    <p><strong><code class="language-plaintext highlighter-rouge">tryAcquire(int arg)</code></strong><br />
+尝试获取独占锁。</p>
+  </li>
+  <li>
+    <p><strong><code class="language-plaintext highlighter-rouge">tryRelease(int arg)</code></strong><br />
+尝试释放独占锁。</p>
+  </li>
+  <li>
+    <p><strong><code class="language-plaintext highlighter-rouge">tryAcquireShared(int arg)</code></strong><br />
+尝试获取共享锁。</p>
+  </li>
+  <li>
+    <p><strong><code class="language-plaintext highlighter-rouge">tryReleaseShared(int arg)</code></strong><br />
+尝试释放共享锁。</p>
+  </li>
+  <li>
+    <p><strong><code class="language-plaintext highlighter-rouge">isHeldExclusively()</code></strong><br />
+判断当前线程是否持有独占锁。</p>
+  </li>
+</ul>
+
+<hr />
+
+<h2 id="4-模板方法">4. 模板方法</h2>
+
+<p>AQS提供了一系列模板方法，供开发者直接调用：</p>
+
+<ul>
+  <li><strong>独占模式</strong>
+    <ul>
+      <li><code class="language-plaintext highlighter-rouge">acquire(int arg)</code>：阻塞获取独占锁。</li>
+      <li><code class="language-plaintext highlighter-rouge">acquireInterruptibly(int arg)</code>：可中断地获取独占锁。</li>
+      <li><code class="language-plaintext highlighter-rouge">tryAcquireNanos(int arg, long nanosTimeout)</code>：带超时的获取独占锁。</li>
+      <li><code class="language-plaintext highlighter-rouge">release(int arg)</code>：释放独占锁。</li>
+    </ul>
+  </li>
+  <li><strong>共享模式</strong>
+    <ul>
+      <li><code class="language-plaintext highlighter-rouge">acquireShared(int arg)</code>：阻塞获取共享锁。</li>
+      <li><code class="language-plaintext highlighter-rouge">acquireSharedInterruptibly(int arg)</code>：可中断地获取共享锁。</li>
+      <li><code class="language-plaintext highlighter-rouge">tryAcquireSharedNanos(int arg, long nanosTimeout)</code>：带超时的获取共享锁。</li>
+      <li><code class="language-plaintext highlighter-rouge">releaseShared(int arg)</code>：释放共享锁。</li>
+    </ul>
+  </li>
+  <li><strong>其他工具方法</strong>
+    <ul>
+      <li><code class="language-plaintext highlighter-rouge">getQueueThreads()</code>：获取等待队列中的线程。</li>
+      <li><code class="language-plaintext highlighter-rouge">owns(ConditionObject condition)</code>：判断条件队列是否属于当前同步器。</li>
+    </ul>
+  </li>
+</ul>
+
+<hr />
+
+<h2 id="5-方法协作流程">5. 方法协作流程</h2>
+
+<p>以下是AQS的工作流程：</p>
+
+<ol>
+  <li>线程尝试通过<code class="language-plaintext highlighter-rouge">tryAcquire</code>或<code class="language-plaintext highlighter-rouge">tryAcquireShared</code>获取锁。</li>
+  <li>如果获取失败，则将线程加入等待队列。</li>
+  <li>等待队列中的线程通过自旋或阻塞等待被唤醒。</li>
+  <li>唤醒后重新尝试获取锁，直到成功。</li>
+</ol>]]></content><author><name>grobob101</name></author><category term="多线程" /><category term="并发" /><summary type="html"><![CDATA[Java AQS（AbstractQueuedSynchronizer）详解]]></summary></entry><entry><title type="html">一个网络连接的奇妙旅程</title><link href="http://0.0.0.0:4000/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/2025/05/05/%E4%B8%80%E4%B8%AA%E7%BD%91%E7%BB%9C%E8%BF%9E%E6%8E%A5%E6%98%AF%E6%80%8E%E4%B9%88%E8%A2%AB%E5%A4%84%E7%90%86%E7%9A%84.html" rel="alternate" type="text/html" title="一个网络连接的奇妙旅程" /><published>2025-05-05T00:00:00+00:00</published><updated>2025-05-05T00:00:00+00:00</updated><id>http://0.0.0.0:4000/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/2025/05/05/%E4%B8%80%E4%B8%AA%E7%BD%91%E7%BB%9C%E8%BF%9E%E6%8E%A5%E6%98%AF%E6%80%8E%E4%B9%88%E8%A2%AB%E5%A4%84%E7%90%86%E7%9A%84</id><content type="html" xml:base="http://0.0.0.0:4000/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/2025/05/05/%E4%B8%80%E4%B8%AA%E7%BD%91%E7%BB%9C%E8%BF%9E%E6%8E%A5%E6%98%AF%E6%80%8E%E4%B9%88%E8%A2%AB%E5%A4%84%E7%90%86%E7%9A%84.html"><![CDATA[<h1 id="-一个网络连接的奇妙旅程">🚀 一个网络连接的奇妙旅程</h1>
 
 <h2 id="-服务端城堡的诞生">🏰 服务端城堡的诞生</h2>
 

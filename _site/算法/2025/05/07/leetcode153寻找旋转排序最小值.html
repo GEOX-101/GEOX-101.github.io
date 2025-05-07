@@ -69,7 +69,7 @@
       </a>
     
       <a href="/archive.html" 
-         class="current"
+         
          style="color: white; text-decoration: none; padding: 0.5rem; text-shadow: 0 0 8px white;">
         归档
       </a>
@@ -217,125 +217,69 @@
     </header>
 
     <main class="container">
-      <h1>📅 归档</h1>
+      <h1>寻找旋转排序数组中的最小值</h1>
+<p>07 May 2025 - grobob101</p>
+<p><a href="https://leetcode.cn/problems/find-minimum-in-rotated-sorted-array/description/?envType=study-plan-v2&amp;envId=top-100-liked">153. 寻找旋转排序数组中的最小值 - 力扣（LeetCode）</a></p>
 
-<ul class="timeline">
-  
-  
-    <li class="year">
-      <h2>2025</h2>
-      <ul class="posts">
-        
-          <li class="post">
-            <span class="date">May 07</span>
-            <a href="/%E7%AE%97%E6%B3%95/2025/05/07/leetcode153%E5%AF%BB%E6%89%BE%E6%97%8B%E8%BD%AC%E6%8E%92%E5%BA%8F%E6%9C%80%E5%B0%8F%E5%80%BC.html">寻找旋转排序数组中的最小值</a>
-          </li>
-        
-          <li class="post">
-            <span class="date">May 06</span>
-            <a href="/%E5%A4%9A%E7%BA%BF%E7%A8%8B/2025/05/06/%E5%A4%9A%E7%BA%BF%E7%A8%8B%E5%AE%9E%E6%88%98.html">多线程实战</a>
-          </li>
-        
-          <li class="post">
-            <span class="date">May 05</span>
-            <a href="/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/2025/05/05/%E4%B8%80%E4%B8%AA%E7%BD%91%E7%BB%9C%E8%BF%9E%E6%8E%A5%E6%98%AF%E6%80%8E%E4%B9%88%E8%A2%AB%E5%A4%84%E7%90%86%E7%9A%84.html">一个网络连接的奇妙旅程</a>
-          </li>
-        
-          <li class="post">
-            <span class="date">May 03</span>
-            <a href="/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/2025/05/03/java%E8%99%9A%E6%8B%9F%E6%9C%BA%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86.html">Java虚拟机(JVM)深度解析：内存管理与性能调优</a>
-          </li>
-        
-          <li class="post">
-            <span class="date">May 03</span>
-            <a href="/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/2025/05/03/java%E5%BC%80%E5%8F%91%E6%A1%86%E6%9E%B6%E8%AF%A6%E8%A7%A3.html">Java开发框架实战：Spring Boot核心原理与微服务实践</a>
-          </li>
-        
-          <li class="post">
-            <span class="date">May 03</span>
-            <a href="/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/2025/05/03/java%E5%A4%9A%E7%BA%BF%E7%A8%8B%E5%AE%9E%E6%88%98.html">Java多线程实战：从基础到高性能并发编程</a>
-          </li>
-        
-          <li class="post">
-            <span class="date">May 03</span>
-            <a href="/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/2025/05/03/java%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E5%85%A5%E5%9C%9F.html">Java从入门到入土 📚</a>
-          </li>
-        
-          <li class="post">
-            <span class="date">Apr 20</span>
-            <a href="/%E6%97%A5%E5%B8%B8/2025/04/20/%E6%8A%BD%E8%B1%A1%E7%BB%83%E4%B9%A0%E7%94%9F%E5%85%BB%E6%88%90.html">抽象从不是你的谎言，而是你的真相</a>
-          </li>
-        
-      </ul>
-    </li>
-  
-</ul>
+<p>:::color2
+题目描述：<br />
+已知一个长度为 n 的数组，预先按照升序排列，经由 1 到 n 次 旋转 后，得到输入数组。例如，原数组 nums = [0,1,2,4,5,6,7] 在变化后可能得到：<br />
+若旋转 4 次，则可以得到 [4,5,6,7,0,1,2]<br />
+若旋转 7 次，则可以得到 [0,1,2,4,5,6,7]<br />
+注意，数组 [a[0], a[1], a[2], …, a[n-1]] 旋转一次 的结果为数组 [a[n-1], a[0], a[1], a[2], …, a[n-2]] 。</p>
 
-<style>
-  .timeline {
-    list-style: none;
-    padding: 0;
-  }
+<p>给你一个元素值 互不相同 的数组 nums ，它原来是一个升序排列的数组，并按上述情形进行了多次旋转。请你找出并返回数组中的 最小元素 。</p>
 
-  .year {
-    margin-bottom: 30px;
-  }
+<p>你必须设计一个时间复杂度为 O(log n) 的算法解决此问题。</p>
 
-  .year h2 {
-    font-size: 1.8em;
-    margin-bottom: 10px;
-    color: #333;
-  }
+<p>:::</p>
 
-  .posts {
-    list-style: none;
-    padding-left: 20px;
-    border-left: 2px solid #ddd;
-  }
+<pre><code class="language-plain">示例 1：
+输入：nums = [3,4,5,1,2]
+输出：1
+解释：原数组为 [1,2,3,4,5] ，旋转 3 次得到输入数组。
+示例 2：
+输入：nums = [4,5,6,7,0,1,2]
+输出：0
+解释：原数组为 [0,1,2,4,5,6,7] ，旋转 4 次得到输入数组。
+</code></pre>
 
-  .post {
-    margin-bottom: 10px;
-    padding: 5px 0;
-    position: relative;
-  }
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">class</span> <span class="nc">Solution</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kt">int</span> <span class="nf">findMin</span><span class="o">(</span><span class="kt">int</span><span class="o">[]</span> <span class="n">nums</span><span class="o">)</span> <span class="o">{</span>
+        <span class="kt">int</span> <span class="n">l</span><span class="o">=</span><span class="mi">0</span><span class="o">,</span><span class="n">r</span><span class="o">=</span><span class="n">nums</span><span class="o">.</span><span class="na">length</span><span class="o">-</span><span class="mi">1</span><span class="o">;</span>
+        <span class="k">while</span><span class="o">(</span><span class="n">l</span><span class="o">&lt;</span><span class="n">r</span><span class="o">){</span>
+            <span class="kt">int</span> <span class="n">mid</span><span class="o">=(</span><span class="n">l</span><span class="o">+</span><span class="n">r</span><span class="o">)&gt;&gt;</span><span class="mi">1</span><span class="o">;</span>
+            <span class="k">if</span><span class="o">(</span><span class="n">nums</span><span class="o">[</span><span class="n">mid</span><span class="o">]&lt;=</span><span class="n">nums</span><span class="o">[</span><span class="n">r</span><span class="o">]){</span>
+                <span class="n">r</span><span class="o">=</span><span class="n">mid</span><span class="o">;</span>
+            <span class="o">}</span><span class="k">else</span><span class="o">{</span>
+                <span class="n">l</span><span class="o">=</span><span class="n">mid</span><span class="o">+</span><span class="mi">1</span><span class="o">;</span>
+            <span class="o">}</span>
+        <span class="o">}</span>
+        <span class="k">return</span> <span class="n">nums</span><span class="o">[</span><span class="n">r</span><span class="o">];</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
 
-  .post::before {
-    content: '';
-    position: absolute;
-    left: -22px;
-    top: 10px;
-    width: 10px;
-    height: 10px;
-    background-color: #007bff;
-    border-radius: 50%;
-  }
+<p><strong>代码解释</strong></p>
 
-  .date {
-    display: inline-block;
-    width: 60px;
-    color: #666;
-  }
+<p>:::warning
+初始化两个指针：l指向数组的起始位置，r指向数组的末尾位置。</p>
 
-  .post a {
-    text-decoration: none;
-    color: #333;
-  }
+<p>使用while循环进行二分查找，直到l和r相遇：</p>
 
-  .post a:hover {
-    color: #007bff;
-  }
+<p>计算中间位置mid，即(l + r) » 1（相当于(l + r) / 2）<br />
+如果nums[mid]小于等于nums[r]，说明最小值在左半&gt;部分，将r移动到mid位置<br />
+否则，说明最小值在右半部分，将l移动到mid + 1位置<br />
+当循环结束时，l和r指向同一个位置，这个位置就是最&gt;小值所在的位置，返回nums[r]即可。</p>
 
-  @keyframes typing {
-    from { width: 0; }
-    to { width: 100%; }
-  }
+<p>:::</p>
 
-  h1 {
-    overflow: hidden;
-    white-space: nowrap;
-    animation: typing 3.5s steps(40, end);
-  }
-</style>
+
+<p>
+    07 May 2025
+    
+    
+</p>
     </main>
 
     <footer class="site-footer">
