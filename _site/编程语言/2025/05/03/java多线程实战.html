@@ -83,7 +83,7 @@
   </div>
   <div class="nav-right" style="display: flex; gap: 1rem; align-items: center; position: relative;">
     <div id="search-container">
-      <input type="text" id="search-input" placeholder="search..." style="width: 200px;"> <!-- 固定宽度 -->
+      <input type="text" id="search-input" placeholder="search..." style="width: 200px;">
       <ul id="results-container"></ul>
     </div>
     <a href="/profile" 
@@ -94,6 +94,13 @@
            width="50" height="50"
            style="border-radius: 100px; margin-right: 0.5rem;">
     </a>
+    <!-- 添加语言切换按钮 -->
+    <div class="language-switcher" style="position: relative;">
+      <select id="language-select" style="background-color: #000; color: white; border: none; font-size: 16px;">
+        <option value="zh">中文</option>
+        <option value="en">English</option>
+      </select>
+    </div>
   </div>
 </nav>
 
@@ -159,6 +166,7 @@
 </style>
 
 <script src="https://unpkg.com/simple-jekyll-search@latest/dest/simple-jekyll-search.min.js"></script>
+<script src="https://unpkg.com/js-yaml@4.1.0/dist/js-yaml.min.js"></script>
 <script>
   var sjs = SimpleJekyllSearch({
     searchInput: document.getElementById('search-input'),
@@ -176,14 +184,7 @@
     }
   });
 
-  function highlightKeyword(keyword) {
-    const results = document.querySelectorAll('#results-container li a');
-    results.forEach(result => {
-      const title = result.textContent;
-      const highlightedTitle = title.replace(new RegExp(keyword, 'gi'), match => `<span class="highlight">${match}</span>`);
-      result.innerHTML = highlightedTitle;
-    });
-  }
+
 
   // Add event listener to handle search input changes
   document.getElementById('search-input').addEventListener('input', function() {
@@ -213,6 +214,38 @@
       event.preventDefault(); // Prevent the default navigation behavior to ensure our custom handling takes precedence
     }
   });
+
+  // 获取所有导航链接和语言选择器元素
+  const navLinks = document.querySelectorAll('.nav-links a');
+  const languageSelect = document.getElementById('language-select');
+
+  // 动态加载语言数据并刷新页面
+  function loadLanguageData() {
+    const selectedLang = localStorage.getItem('selectedLanguage') || 'zh'; // 默认语言为中文
+    languageSelect.value = selectedLang;
+
+    // 使用 Jekyll 数据文件中的语言映射
+    const language = {"zh":{"主页":"主页","我的博客":"我的博客","分类":"分类","标签":"标签","归档":"归档","关于":"关于"},"en":{"主页":"Home","我的博客":"Blog","分类":"Categories","标签":"Tags","归档":"Archive","关于":"About"}};
+
+    // 更新导航栏内容
+    navLinks.forEach(link => {
+      const originalName = link.textContent.trim();
+      if (language[selectedLang] && language[selectedLang][originalName]) {
+        link.textContent = language[selectedLang][originalName];
+      }
+    });
+  }
+
+  // 监听语言选择变化并刷新页面
+  languageSelect.addEventListener('change', function () {
+    const selectedLang = this.value;
+    localStorage.setItem('selectedLanguage', selectedLang); // 存储选中的语言
+    window.location.reload(); // 刷新页面以应用新的语言设置
+  });
+
+  // 页面加载时初始化语言数据
+  loadLanguageData();
+
 </script>
     </header>
 
